@@ -1,0 +1,72 @@
+<%- include('headerin'); -%>
+<div id="questionz">
+  <h1 class="heading">Questions</h1>
+  <h1  class="heading" style="margin-left: 80vw;"><%- locals.team.powerupTimer %> mins</h1>
+  <% if (Date.now() > new Date("Oct 1, 2020 00:00:00")) { %> <!-- Use > to check if the current date is after Oct 1, 2020 -->
+    <% let unansweredQuestionFound = false; %>
+
+    <% locals.questions.forEach(function (element) { %>
+      <% if (!unansweredQuestionFound && !locals.team.questionsGamble.includes(element.title)) { %>
+        <!-- Display the first unanswered question -->
+        
+          <div class = "qbox">
+            <form action="/answerGamble" method="POST">
+          <div class="qinfo">
+            <p>
+              <input 
+                type="hidden"
+                value="<%= element.title %>"
+                name="title"
+                class="defender"
+                readonly
+              />
+            </p>
+            <p class="qhead"><%- element.title %></p>
+            <p class="qtext" style="margin-bottom: 144px">
+              <%- element.question %>
+            </p>
+            <% if (element.attachment != "") { %>
+              <!-- <a
+                class="attacher"
+                href="/questionfiles/<%= element.attachment %>"
+                download="<%- element.attachment %>"
+                target="_blank"
+              >
+                <%- element.attachment %>
+              </a> -->
+              llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+            <% } %>
+          </div>
+          <div class="sidebyside1">
+            <input type="text" name="ans" <% if (locals.curr === element.title) { %> value="Incorrect" style="color:red;border:1px solid red" <% } %> />
+            <button <% if (locals.team.sabotage === true) { %> disabled style="background-color:grey" <% } %> id="myButtonn">Submit</button>
+          </div>
+          
+        </form>
+      </div>
+        
+        <% unansweredQuestionFound = true; %> <!-- Mark the question as found -->
+      <% } %>
+    <% }) %>
+
+    <!-- Additional JavaScript and footer content -->
+  <% } else { %>
+    <div id="thank">
+      <h1 style="text-align: center; color: white">Thanks for playing!</h1>
+      <br />
+    </div>
+  <% } %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/js/cta.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('input[name="ans"]').click(function (e) {
+        e.preventDefault();
+        $(this).css({ color: "white", opacity: "0.8", border: "none" });
+        $(this).attr({ value: "" });
+      });
+    });
+  </script>
+</div>
+<%- include('footer'); -%>

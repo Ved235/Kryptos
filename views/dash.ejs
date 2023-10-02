@@ -1,0 +1,60 @@
+<%- include('headerin'); -%>
+<div class="dashboard">
+  <div class="top">
+    <h1><%- locals.team.name.trim() %>, <%- locals.team.school.trim() %></h1>
+    <h3 style="color:#578b32;cursor: pointer;text-align:right;display:inline-block;float:right" onclick="window.location.href='/'">Logout</h3>
+    </div>
+  <div class="dashrow">
+    <div class="points">
+      <div class="fp">
+        <h1>Flag Points</h1>
+        <h1 class="numbr"><%- locals.team.fp %></h1>
+      </div>
+      <div class="bp">
+        <h1>Battle Points</h1>
+        <h1 class="numbr"><%- locals.team.bp %></h1>
+      </div>
+    </div>
+    <div class="right">
+      <div class="powerup">
+        <center>
+        <h1>Powerup</h1>
+        <% if (locals.team.idk===true) { %>
+        <img src="/images/shield.svg" alt="shield" />
+        <% }else if (locals.team.hintspire===true) { %>
+        <img src="/images/discount.svg" alt="halfprice" />
+        <% }else if (locals.team.gamble===true) { %>
+          <img src="/images/discount.svg" alt="halfprice" />
+          <%} else if (locals.team.dp == "jumpscare") { %>
+          <img src="/images/jumpscare.svg" alt="halfprice" style="width: 10rem; height: auto;" />
+          <%}else if (locals.team.dp == "sabotage") { %>
+            <img src="/images/sabotage.svg" alt="halfprice" style="width: 30%;" />
+            <%}else { %>
+          <h1>None</h1>
+        </center>
+        <% } %> 
+          <% if (locals.team.powerupTimer > 0) { %>
+           <h3 style="color:#578b32"><%- locals.team.powerupTimer %>min</h3>
+          <% }else {%>
+            <h3 ><a style="color:#578b32 ;text-decoration: none;" href="/shop">Buy One</a></h3>
+            <%}%>
+      </div>
+      <div class="yaar">
+        <h1>Attacked Cooldown</h1>
+        
+          
+       
+            <h1 class="numbr"><%- locals.team.attackCooldown %>m</h1>
+         
+            
+      
+      </div>
+    </div>
+  </div>
+    <div class="dashrow">
+
+    </div>
+  </div>
+
+  <%- include('footer'); -%>
+</div>

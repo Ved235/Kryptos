@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kryptos 2023 promises to be a cryptic hunt in a league of its own. We have developed a new platform that combines the classic Capture the Flag formula with a fun, engaging and strategic wargame.">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kryptos 2023</title>
+    <link rel="stylesheet" href="/css/style.css" />
+      <link rel="icon" href="/images/n.png">
+ 
+  </head>
+
+  <body>
+    <nav> 
+   
+      <ul>
+        <li>
+          <a href="/dashboard" <% if (locals.active=='dashboard') { %>class="active"<% } %>>Dashboard</a>
+        </li>
+        <li>
+          <a href="/leaderboard"<% if (locals.active=='leaderboard') { %>class="active"<% } %> >Leaderboard</a>
+        </li>
+
+        <li>
+          <a href="/shop" <% if (locals.active=='shop') { %>class="active"<% } %> >Shop</a>
+        </li>
+        <li>
+          <a href="/questions" <% if (locals.active=='questions') { %>class="active" <% } %>>Questions</a>
+        </li>
+
+      </ul>
+    </nav>

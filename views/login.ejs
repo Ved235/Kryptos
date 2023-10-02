@@ -1,0 +1,67 @@
+<%- include('header'); -%>
+<div class="container">
+  <div class="ib-child">
+    <img src="https://cdn.discordapp.com/attachments/744967416009982083/1146529987843854386/3-removebg-preview.png" alt="Kryptos login" style="width: 100%; height: 100%; padding-left: 20%"/>
+  </div>
+  <div class="ib-child">
+    <form action="/login" method="post" class="loginform">
+      <h1>Login</h1>
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Email"
+        autocomplete="off"
+      />
+      <input
+        type="password"
+        name="password"
+        required
+        placeholder="Password"
+        autocomplete="off"
+      />
+      <% if (locals.failure) { %>
+      <p class="error">Could not find a user with the given credentials.</p>
+      <% } %> <% if (locals.passed) { %>
+      <p style="color: green">Password Changed!</p>
+      <% } %>
+      <div class="bottomer">
+        <p
+          class="pass"
+          onclick="$('.loginform').hide();$('.passchange').show()"
+        >
+          Change Password
+        </p>
+        <input type="submit" value="Login" />
+      </div>
+    </form>
+    <form
+      action="/passchange"
+      method="post"
+      class="passchange"
+      style="display: none"
+    >
+      <h1 style="line-height: 70px">Change Password</h1>
+      <input type="email" name="email" required placeholder="Email" />
+      <input type="password" name="old" required placeholder="Old Password" />
+      <input type="password" name="new" required placeholder="New Password" />
+      <% if (locals.passsfailure) { %>
+      <p class="error">Could not find a user with the given credentials.</p>
+      <% } %>
+      <div class="bottomer">
+        <p
+          class="pass"
+          onclick="$('.passchange').hide();$('.loginform').show()"
+        >
+          Login
+        </p>
+        <input type="submit" value="Change" />
+      </div>
+    </form>
+  </div>
+</div>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  defer
+></script>
+<%- include('footer'); -%>

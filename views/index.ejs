@@ -1,0 +1,90 @@
+<%- include('header'); -%>
+<style>
+  .landimg {
+    float: right !important;
+    width: 60%;
+    height: 120vh;
+    display: flex;
+    flex-direction: row;
+  }
+  .landimg img {
+    margin-left: 15% !important;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  @media only screen and (max-width: 1000px) {
+    .landimg {
+      float: none !important;
+      width: 100vw;
+      height: auto;
+      margin-bottom: 5%;
+      display: flex;
+      flex-direction: column;
+    }
+    .landimg img {
+      margin-left: -10% !important;
+    }
+    .info-header {
+      top: 00%;
+    }
+  }
+</style>
+<div class="info-header ib-child">
+  <h1 data-value="KRYPTOS">SHISTECH</h1>
+  <p class="info">
+    Kryptos 2023 promises to be a cryptic hunt in a league of its own. We have
+    developed a new platform that combines the classic Capture the Flag formula
+    with a fun, engaging and strategic wargame that will test both the
+    participants ability to solve these questions, while also using resources in
+    a tactical manner.
+  </p>
+  <button
+    class="mainbtns"
+    onclick="window.open('https://docs.google.com/document/d/1Oagnr9oA5iCDa-N4KIC-juf7MJKU-b9oBe9DZROxPNo/edit')"
+    target="_blank"
+  >
+    Format
+  </button>
+  <button
+    class="mainbtns"
+    style="margin-left: 5%"
+    onclick="window.open('https://discord.io/Kryptos')"
+    target="_blank"
+  >
+    Discord
+  </button>
+</div>
+<div class="landimg">
+  <img src="https://cdn.discordapp.com/attachments/998290768420683886/1155409139258888224/1.png" alt="Kryptos front" style="width: 75%; height: 75%; padding-left: 20%"/>
+</div>
+<script>
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let interval = null;
+
+document.querySelector("h1").onmouseover = event => {  
+  let iteration = 0;
+  
+  clearInterval(interval);
+  
+  interval = setInterval(() => {
+    event.target.innerText = event.target.innerText
+      .split("")
+      .map((letter, index) => {
+        if(index < iteration) {
+          return event.target.dataset.value[index];
+        }
+      
+        return letters[Math.floor(Math.random() * 26)]
+      })
+      .join("");
+    
+    if(iteration >= event.target.dataset.value.length){ 
+      clearInterval(interval);
+    }
+    
+    iteration += 1 / 3;
+  }, 30);
+}
+</script>
+<%-include('footer'); -%>

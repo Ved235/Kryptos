@@ -1,0 +1,45 @@
+{
+  "name": "dcrypt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divided7/dcrypt.git"
+  },
+  "author": "Divyansh Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divided7/dcrypt/issues"
+  },
+  "homepage": "https://github.com/divided7/dcrypt#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.6.1",
+    "helmet": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^6.1.0",
+    "mongoose": "^5.10.1",
+    "node-cron": "^2.0.3",
+    "nodemon": "^2.0.4",
+    "rate-limit-mongo": "^2.2.0",
+    "readline": "^1.3.0",
+    "sweetalert2": "^11.7.27"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-google": "^0.14.0"
+  }
+}

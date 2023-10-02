@@ -1,0 +1,231 @@
+<%- include('headerin'); -%>
+<div class="shop">
+  <h1 class="heading">Shop</h1>
+  <div class="top">
+    <div class="switcher">
+
+      <div class="swactive" id="two">
+        <p>Powerups</p>
+      </div>
+    </div>
+    <div class="bal">
+      <p><%= locals.team.bp %><font style="color: #78bd47">BP</font></p>
+    </div>
+  </div>
+  <div class="deduct">
+    <p>
+      <span id="deduct" class="oneform" style="display: none; background: none"
+        >0
+      </span>
+      <% if (locals.team.halfPrice===true) { %>
+      <span
+        class="oneform"
+        style="display: none; background: none; color: white"
+        >x 1/2</span
+      >
+      <% } %>
+    </p>
+  </div>
+
+
+  <form action="/powerup" method="post" class="oneform" >
+    <div class="shopitems">
+      <div class="shopitem">
+        <h1>CRYSTAL 1</h1>
+        <div class="side">
+          <div class="flexer">
+            <img src="/images/crystal(1).png" alt="crystal1" />
+          </div>
+          <div class="iteminfo">
+            <div class="botum">
+              <p>Duration : 1 hr</p>
+              <input class="quantity naming" name="naming" id="naming" style="visibility: hidden;"/>
+              <div class="number-input">
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepDown();"
+                  style="border-right: 0.1px solid #555555"
+                  class="minuscrys1"
+                ></button>
+                <input
+                  class="quantity crys1"
+                  min="0"
+                  name="crys1"
+                  value="0"
+                  type="number"
+                  max="1"
+                  readonly
+                />
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepUp()"
+                  class="plus crys1"
+                  style="border-left: 0.1px solid #555555"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3>Self Powerup</h3>
+      </div>
+      <div class="shopitem">
+        <h1>CRYSTAL 2</h1>
+        <div class="side">
+          <div class="flexer">
+            <img src="/images/crystal(2).png" alt="crystal2" />
+          </div>
+          <div class="iteminfo">
+            <div class="botum">
+              <p>Duration : 1 hr</p>
+              <div class="number-input">
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepDown()"
+                  style="border-right: 0.1px solid #555555"
+                  class="minuscrys2"
+                ></button>
+                <input
+                  class="quantity crys2"
+                  min="0"
+                  name="crys2"
+                  value="0"
+                  type="number"
+                  max="1"
+                  readonly
+                />
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepUp()"
+                  class="plus crys2"
+                  style="border-left: 0.1px solid #555555"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3>Attacking Powerup</h3>
+      </div>
+
+      <div class="shopitem">
+        <h1>CRYSTAL 3</h1>
+        <div class="side">
+          <div class="flexer">
+            <img
+              src="/images/crystal(3).png"
+              alt="crystal3"
+             
+            />
+          </div>
+          <div class="iteminfo">
+            <div class="botum">
+              <p>Uses : 3</p>
+              <div class="number-input">
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepDown()"
+                  style="border-right: 0.1px solid #555555"
+                  class="minuscrys3"
+                ></button>
+                <input
+                  class="quantity crys3"
+                  min="0"
+                  name="crys3"
+                  value="0"
+                  type="number"
+                  max="1"
+                  readonly
+                />
+                <button
+                  type="button"
+                  onclick="this.parentNode.querySelector('input[type=number').stepUp()"
+                  style="border-left: 0.1px solid #555555"
+                  class="plus crys3"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3>
+          OMEGA POWERUP
+        </h3>
+      </div>
+
+    </div>
+    <button class="buytr">Buy</button>
+  </form>
+  <center>
+  <form action="/attack" method="POST" class="attack" id="attack" style="visibility: hidden;">
+    <input type="text" name="victimname" value="" class="victimname" placeholder="Victim Name" autocomplete="off"/>
+    <p id="powerupType" style="color:white"></p>
+    <input type="submit" value="↵" />
+  </form>
+  </center>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    <% if (locals.error){ %>
+      <% if (locals.error=='buywrong'){ %>
+    window.onload = function () {
+      alert("You Don't have enough BP!");
+    };<% } else if  (locals.error == 'buyless') { %>
+         window.onload = function () {
+          alert("Please select atleast one item.");
+        };
+        
+    <% } 
+    else if  (locals.error == 'powerupcooldown') { %>
+         window.onload = function () {
+          alert("Cooldown is still active!");
+        };
+        
+    <% } 
+    else if  (locals.error == 'entervictim' && locals.team.powerupTimer === 0 && locals.team.bp >= 1000) { %>
+    const usernameInput = document.getElementById('attack');
+    const powerupType = document.getElementById('powerupType');
+      const listOfPowerupsAttack = ["jumpscare", "sabotage"];
+      if(localStorage.getItem(locals.team.name) === null){
+        const random = Math.floor(Math.random() * listOfPowerupsAttack.length);
+        const powerupattack = listOfPowerupsAttack[random];
+        localStorage.setItem(locals.team.name, powerupattack);
+        powerupType.textContent = powerupattack;
+        usernameInput.style.visibility = 'visible';
+      }else{
+        const powerupattack = localStorage.getItem(locals.team.name);
+        powerupType.textContent = powerupattack;
+        usernameInput.style.visibility = 'visible';
+      }
+
+      
+        
+    <% } 
+    else { %>
+        window.onload = function () {
+          alert("Only one powerup can be active at a time!");
+        };
+    <% }} %>
+         function multiUpdate() {
+          document.querySelector(".deduct .oneform").innerText =document.querySelector(".crys1").value * 1000 + document.querySelector(".crys2").value * 1000 + document.querySelector(".crys3").value * 1000
+          }
+          document.querySelector(".minuscrys1").addEventListener("click", () => {
+            multiUpdate();
+          });
+          document.querySelector(".plus.crys1").addEventListener("click", () => {
+            multiUpdate();
+          });
+                    document.querySelector(".minuscrys2").addEventListener("click", () => {
+                        multiUpdate();
+                      });
+                      document.querySelector(".plus.crys2").addEventListener("click", () => {
+                        multiUpdate();
+                      });
+                                document.querySelector(".minuscrys3").addEventListener("click", () => {
+                                    multiUpdate();
+                                  });
+                                  document.querySelector(".plus.crys3").addEventListener("click", () => {
+                                    multiUpdate();
+                                  });
+                                        
+
+  </script>
+  <%- include('footer'); -%>
+</div>

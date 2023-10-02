@@ -1,0 +1,113 @@
+<%- include('headerin'); -%>
+<div id="questionz">
+  <h1 class="heading">Questions</h1>
+  <% if (Date.now() <new Date("Oct 1, 2020 00:00:00")) { %> //change to > sign
+  <div id="thank">
+    <h1 style="text-align: center; color: white">Thanks for playing!</h1>
+    <br />
+
+  </div>
+  <% } else { %>
+  <div class="questions">
+    <% locals.questions.forEach( function (element){ %>
+    <div <% if (locals.team.questions.includes(element.title)) { %>
+      style="background:#578b32;cursor:default" <% }else{ %>
+      onclick="openModal('<%- locals.questions.indexOf(element) %>')"<% }%>
+      class="question ques<%- locals.questions.indexOf(element) %> " >
+      <div class="qcontent">
+        <p><%- element.title %></p>
+        <p><%- element.points %></p>
+      </div>
+    </div>
+    <% }) %> <% locals.questions.forEach( function (element){ %> <% if
+    (!locals.team.questions.includes(element.title)) { %> <div id="pop<%-
+    locals.questions.indexOf(element) %>" class="qmodal" <% if
+    (locals.curr===element.title){ %> style="display: block" <%}%>>
+    <form action="/answer" method="POST">
+      <p
+        class="close"
+        onclick="closeModal('<%= locals.questions.indexOf(element) %>')"
+      >
+        &#10060;
+      </p>
+      <div class="qinfo">
+        <p>
+          <input 
+            type="hidden"
+            value="<%= element.title%>"
+            name="title"
+            class="defender"
+            readonly
+          />
+        </p>
+        <p class="qhead"><%- element.title %></p>
+        <p class="qtext" style="margin-bottom: 144px">
+          <%- element.question %>
+        </p>
+        <% if (element.attachment!=""){ %>
+        <a
+          class="attacher"
+          href="/questionfiles/<%-(element.attachment)%>"
+          download="<%- element.attachment %>"
+          target="_blank"
+        >
+          <%- element.attachment %>
+        </a>
+        <% } %>
+      </div>
+      <div class="sidebyside">
+        <input type="text" name="ans" <% if (locals.curr===element.title){ %>
+        value="Incorrect" style="color:red;border:1px solid red" <%}%>/>
+        <button <% if (locals.team.sabotage===true){ %>
+          disabled style="background-color:grey" <%}%> id="myButtonn">Submit</button>
+      </div>
+    </form>
+  </div>
+  <% } }) %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="/js/cta.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get a reference to the button by its id
+      const myButton = document.getElementById("myButtonn");
+    
+      // Add a click event listener to the button
+      myButton.addEventListener("click", function () {
+    
+      
+      });
+    });
+  </script>
+  <script>
+    // ScrollReveal({
+    //   reset: false,
+    // }).reveal(".question", {
+    //   delay: 50,
+    // });
+    $(document).ready(function () {
+      $('input[name = "ans"]').click(function (e) {
+        e.preventDefault();
+        $(this).css({ color: "white", opacity: "0.8", border: "none" });
+        $(this).attr({ value: "" });
+      });
+    });
+
+    function openModal(num) {
+      $(".qmodal").each(function () {
+        $(this).css({ display: "none" });
+      });
+      var e1 = document.querySelector("." + "ques" + num),
+        e2 = document.getElementById("pop" + num);
+      cta(e1, e2, { duration: 0.2, relativeToWindow: true }, function (e2) {
+        e2.style.display = "block";
+      });
+    }
+    function closeModal(num) {
+      document.getElementById("pop" + num).style.display = "none";
+    }
+  </script>
+  <% }%> <%- include('footer'); -%>
+</div>
+

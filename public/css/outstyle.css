@@ -1,0 +1,458 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=block");
+@font-face {
+  font-family: fcsq;
+  src: url(../fonts/fcsq.woff2);
+  font-display: block;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #190c22;
+  font-family: "Red Hat Display", "sans-serif";
+  overflow-x: hidden;
+}
+.container {
+  position: absolute;
+  width: 100vw;
+  font-size: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0% 0% 0% 10%;
+}
+
+.container > .ib-child {
+  display: inline-block;
+  width: 50%;
+  font-size: 16px;
+}
+.ib-child {
+  display: table-cell;
+  vertical-align: middle;
+}
+input:not([type="submit"]) {
+  display: block;
+  margin: 15px 0px;
+  margin-left: -20px;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  width: 110%;
+  color: #1e0f29;
+  opacity: 0.7;
+}
+input[type="submit"]:not(.registrr) {
+  margin-left: 100%;
+  transform: translateX(-100%);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #78bd47;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #78bd47;
+}
+.g-recaptcha {
+  margin: 0 auto;
+}
+.pass {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  font-size: 0.9vw;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.bottomer {
+  margin-left: 0%;
+  width: 100%;
+  display: inline-block;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: "Red Hat Display";
+  font-size: 18px;
+  position: relative;
+  margin: 10px 0px;
+}
+img:not(.navlogo) {
+  width: 120%;
+  margin-left: -10%;
+}
+form {
+  background-color: #2e1f39;
+  width: 60%;
+  margin: 0% auto;
+  padding: 5px 60px;
+  border-radius: 18px;
+}
+.regform {
+  margin-top: 10%;
+}
+
+form h1 {
+  font-family: "Red Hat Display", "sans-serif";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 3vw;
+  margin: 0px;
+  margin-top: 20px;
+  color: #ffffff;
+  margin-left: -20px;
+  margin-bottom: 0px;
+  line-height: 5vw;
+}
+.error {
+  color: #578b32;
+}
+@media only screen and (max-width: 1400px) {
+  .g-recaptcha {
+    transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .g-recaptcha {
+    transform: scale(0.67);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+  input:not([type="submit"]) {
+    width: 140%;
+    margin-left: -20%;
+  }
+  .bottomer {
+    width: 140%;
+    margin-left: -20%;
+  }
+}
+nav {
+  height: 10vh;
+  width: 100%;
+  background-color: #15081e;
+  position: absolute;
+  z-index: 1;
+}
+.navlogo {
+  height: 50%;
+  top: 25%;
+  left: 2%;
+  width: auto;
+
+  position: absolute;
+}
+ul {
+  list-style-type: none;
+  margin-right: 60px;
+}
+li {
+  float: right;
+  margin-top: 5vh;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+li:not(:last-child) {
+  margin-left: 60px;
+}
+.active:after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 80%;
+  margin: 5px 10%;
+  border-radius: 12px;
+  background-color: #78bd47;
+}
+li:after {
+  width: 0%;
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  margin: 5px 10%;
+  border-radius: 12px;
+  background-color: #78bd47;
+  transition: width 0.2s ease-in-out;
+}
+li:hover:after {
+  width: 80%;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+}
+.info-header {
+  padding: 0% 5%;
+  width: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+h1 {
+  font-family: fcsq, "sans-serif";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 120px;
+  line-height: 140px;
+  color: #578b32;
+  margin: 0% 0% 5% 0%;
+}
+.info {
+  width: 90%;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  margin: 5% 0%;
+}
+.mainbtns {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #78bd47;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #78bd47;
+}
+.lb {
+  font-family: "Red Hat Display";
+
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 77px;
+  margin: 0px 0px 2vw 0px;
+  color: #ffffff;
+}
+.tablecontain {
+  padding: 2% 5%;
+  margin-top: 10vh;
+}
+tr {
+  text-align: center;
+}
+th {
+  padding: 24px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  background-color: #101010;
+}
+td {
+  padding: 24px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+}
+table {
+  color: white;
+  width: 100%;
+  border: none;
+  border-spacing: 0px;
+}
+.registrr {
+  margin-left: 100%;
+  transform: translateX(-100%);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #78bd47;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #78bd47;
+}
+@media only screen and (max-width: 1000px) {
+  .lb {
+    font-size: 32px;
+  }
+  .tablecontain {
+    padding: 2% 2%;
+    margin-top: 10vh;
+  }
+  tr {
+    text-align: center;
+  }
+  th {
+    padding: 8px;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    background-color: #101010;
+  }
+  td {
+    padding: 8px;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+  }
+  table {
+    color: white;
+    width: 100%;
+    border: none;
+    border-spacing: 0px;
+  }
+  .bottomer {
+    width: 100%;
+    margin-left: 0%;
+  }
+  .navlogo {
+    display: none;
+  }
+  .container {
+    position: absolute;
+    width: 100vw;
+    font-size: 0;
+    top: 12vh;
+    transform: none;
+    padding: 0% 10%;
+  }
+  form h1 {
+    margin-left: 0px;
+  }
+  input[type="submit"] {
+    padding: 10px 20px !important;
+  }
+  .pass {
+    font-size: 4vw;
+  }
+  .container > .ib-child {
+    display: block;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 16px;
+  }
+  .ib-child {
+    display: block;
+  }
+
+  input:not([type="submit"]) {
+    width: 100%;
+    margin-left: 0%;
+    padding: 8px 10px;
+    font-size: 18px;
+  }
+  form h1 {
+    font-size: 42px;
+    line-height: 64px;
+    margin-top: 0px;
+    text-align: center;
+  }
+  form {
+    background-color: #242323;
+    width: 100%;
+    margin: 10% auto;
+    padding: 10px 15px;
+    border-radius: 18px;
+  }
+  .g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+  nav {
+    display: grid;
+    place-items: center;
+  }
+  ul {
+    list-style-type: none;
+    margin-right: 10px;
+  }
+  li {
+    float: right;
+    margin-top: 4vh;
+    transform: translateY(-100%);
+    font-size: 12px;
+  }
+  li:not(:last-child) {
+    margin-left: 25px;
+  }
+  .active:after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 4px;
+    width: 80%;
+    margin: 5px 10%;
+    border-radius: 12px;
+    background-color:#578b32;
+  }
+  .info-header {
+    width: 100%;
+    position: relative;
+    margin-top: 15vh;
+    transform: translateY(0%);
+  }
+
+  h1 {
+    font-size: 100px;
+  }
+  .mainbtns {
+    width: 120px;
+  }
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 10px 150px #111;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #578b32;
+  border-radius: 4px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}

@@ -1,0 +1,1430 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=block");
+@font-face {
+  font-family: fcsq;
+  src: url(../fonts/fcsq.woff2);
+  font-display: block;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#thank {
+  padding: 0vh 5vh;
+}
+#thank h1 {
+  font-size: 8vh;
+  color: white;
+}
+#thank p {
+  color: white;
+  font-size: 2vw;
+}
+#thank a {
+  color: #578b32;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #190c22;
+  font-family: "Red Hat Display", "sans-serif";
+  overflow-x: hidden;
+}
+
+nav {
+  height: 10vh;
+  width: 100%;
+  background-color: #190c22;
+  position: absolute;
+}
+
+.navlogo {
+  height: 50%;
+  top: 25%;
+  left: 2%;
+  width: auto;
+  display: inline-block;
+  position: absolute;
+}
+ul {
+  list-style-type: none;
+  margin-right: 60px;
+}
+li {
+  float: right;
+  margin-top: 5vh;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+li:not(:last-child) {
+  margin-left: 60px;
+}
+.active:after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 80%;
+  margin: 5px 10%;
+  border-radius: 12px;
+  background-color: #78bd47;
+}
+li:after {
+  width: 0%;
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  margin: 5px 10%;
+  border-radius: 12px;
+  background-color: #78bd47;
+  transition: width 0.2s ease-in-out;
+}
+li:hover:after {
+  width: 80%;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.lb {
+  font-family: "Red Hat Display";
+
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 77px;
+  margin: 0px 0px 2vw 0px;
+  color: #ffffff;
+}
+.tablecontain {
+  padding: 2% 5%;
+  margin-top: 10vh;
+}
+tr {
+  text-align: center;
+}
+th {
+  padding: 24px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  color: #ffffff;
+  background-color: #101010;
+}
+td {
+  padding: 24px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4vw;
+  line-height: 2.5vw;
+  color: #ffffff;
+}
+table {
+  color: white;
+  width: 100%;
+  border: none;
+  border-spacing: 0px;
+}
+#questionz {
+  padding: 10vh 5%;
+}
+.questions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.heading {
+  margin: 5vh 0px;
+
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 48px;
+
+  color: #ffffff;
+}
+
+.question {
+  height: 200px;
+  background: #2e1f39;
+  display: inline-block;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  flex: 0 0 20%;
+  margin: 2%;
+}
+.qcontent {
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+  width: 100%;
+  color: #ffffff;
+}
+.qcontent p {
+  margin: 20px 0px;
+  width: 80%;
+  margin-left: 10%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.qmodal {
+  display: none;
+  min-height: 33vh;
+  width: 50vw;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  border-radius: 18px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #2e1f39;
+  color: #fff;
+}
+
+.qinfo {
+  margin: 0px 10% 20px 10%;
+  width: 80%;
+  position: relative;
+  height: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+.qinfo p {
+  margin: 30px 0px;
+}
+.qhead {
+  margin: 20px 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+
+  color: #ffffff;
+}
+.qtext {
+  margin: 20px 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  width: 100%;
+  line-height: 32px;
+  position: relative;
+  text-align: left;
+  color: #ffffff;
+}
+.attacher {
+  position: relative;
+  margin-top: -124px;
+  margin-bottom: 124px;
+  float: left;
+  clear: both;
+  border: none;
+  outline: none;
+  background: #4f4f4f;
+  border-radius: 6px;
+  padding: 0.6vw 1.2vw;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 29px;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+}
+.mymodal .close {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 2vw;
+}
+.qmodal .close {
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+}
+
+.sidebyside {
+  display: flex;
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+  transform: translateX(-50%);
+}
+.sidebyside button {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 29px;
+  padding: 0.6vw 1.2vw;
+  color: #ffffff;
+  margin-left: -10px;
+  z-index: 1;
+  cursor: pointer;
+}
+.sidebyside input[type="text"] {
+  flex-grow: 3;
+  background: #222222;
+  border-radius: 14px 0px 0px 14px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  padding: 10px 10px;
+  color: #1e0f29;
+  opacity: 0.8;
+}
+.atkbtn {
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  padding: 0.6vw 2vw;
+  color: #ffffff;
+  z-index: 1;
+  cursor: pointer;
+  cursor: pointer;
+}
+.atkcol {
+  text-align: center;
+}
+td {
+  width: 25%;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  background: transparent;
+  border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  margin-top: 15%;
+  transform: translateY(-50%);
+}
+.number-input,
+.number-input * {
+  box-sizing: border-box;
+}
+
+.number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 8.7rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 1rem;
+  height: 2px;
+  background-color: #578b32;
+  transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+input[type="number"]:focus {
+  outline: none;
+}
+.middle {
+  text-align: center;
+}
+.middle h3 {
+  margin-bottom: 20px;
+}
+.number-input input[type="number"] {
+  font-family: "Red Hat Display";
+  max-width: 5rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+}
+.mymodal {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #151515;
+  color: #fff;
+  padding: 5vh 5%;
+}
+.mymodal > h1 {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  margin-bottom: 5%;
+  color: #ffffff;
+}
+.twodivs {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.deploy,
+.inventory {
+  flex: 1 1 50%;
+}
+.inventory h1,
+.deploy h1 {
+  text-align: center;
+
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  margin-bottom: 10%;
+  color: #ffffff;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+.inn {
+  display: none;
+}
+.inputz {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5vw;
+}
+.deploy input[type="submit"] {
+  float: right;
+  margin-top: 25%;
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  padding: 0.6vw 2vw;
+  color: #ffffff;
+  z-index: 1;
+  cursor: pointer;
+}
+.inventroop {
+  padding: 5% 1%;
+  background-color: #578b32;
+  text-align: center;
+  min-width: 30%;
+  min-height: 300px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* @-webkit-keyframes flip {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+@keyframes flip {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+} */
+.inventroop p + p {
+  margin-top: 20px;
+
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+
+  color: #ffffff;
+}
+.inventroop p {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+}
+.inventroop img {
+  margin-top: 20px;
+  width: 5vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.shopitem img {
+  
+  padding: 5%;
+}
+.shop,
+.dashboard {
+  padding: 10vh 5%;
+}
+.top {
+  width: 100%;
+  position: relative;
+  height: 5vh;
+}
+.switcher {
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+}
+.switcher div {
+  background-color: #262626;
+  font-family: "Red Hat Display";
+  width: 50%;
+  height: 100%;
+  color: #578b32;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  float: left;
+}
+.bal {
+  background-color: #262626;
+  font-family: "Red Hat Display";
+  width: 10%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  float: right;
+  display: grid;
+  place-items: center;
+}
+
+.swactive {
+  background-color: #578b32 !important;
+}
+.swactive p {
+  color: white;
+}
+.shopitem .number-input input[type="number"] {
+  font-family: "Red Hat Display";
+  max-width: 5rem;
+  font-size: 1rem;
+  background-color: #1f1f1f;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+}
+.shopitem input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  background: transparent;
+  border: none;
+}
+
+.shopitem input[type="number"]::-webkit-inner-spin-button,
+.shopitem input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.shopitem .number-input {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+}
+.shopitem .number-input,
+.shopitem .number-input {
+  box-sizing: border-box;
+}
+
+.shopitem .number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: #1f1f1f;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.shopitem .number-input button:before,
+.shopitem .number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 1rem;
+  height: 2px;
+  background-color: #578b32;
+  transform: translate(-50%, -50%);
+}
+.shopitem .number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.shopitem input[type="number"]:focus {
+  outline: none;
+}
+.shopitems {
+  display: flex;
+  
+  margin-top: 2%;
+}
+
+.shopitem {
+  background-color: #2e1f39;
+  padding: 1%;
+  width: 33%;
+  color: white;
+  border-radius: 14px;
+}
+.shopitem + .shopitem {
+  margin-left: 2%;
+}
+.shopitem h1 {
+  text-align: center;
+  color: #578b32;
+}
+.side {
+  display: flex;
+  flex-wrap: wrap;
+}
+.iteminfo {
+  flex: 1 1 50%;
+  text-align: center;
+  position: relative;
+}
+.iteminfo p:first-of-type {
+  display: block;
+}
+.flexer {
+  flex: 1 1 50%;
+}
+img {
+  width: 100%;
+}
+.iteminfo p {
+  text-align: center;
+  font-size: 0.8vw;
+}
+.botum {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.shopitem h3 {
+  font-weight: 400;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  font-size: 1vw;
+  margin-top: 5%;
+}
+.deduct {
+  color: #fff;
+  text-align: right;
+  padding: 0% 5%;
+  margin-top: 10px;
+}
+.deduct p {
+  display: inline-block;
+  transform: translateX(50%);
+  color: #578b32;
+}
+.buytr {
+  flex-grow: 1;
+  float: right;
+  margin-top: 2%;
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 29px;
+  padding: 0.6vw 2vw;
+  color: #ffffff;
+  margin-left: -10px;
+  z-index: 1;
+  cursor: pointer;
+  box-shadow: 0 0 10px #78bd47;
+}
+.top h1 {
+  color: white;
+  font-weight: 500;
+  display: inline-block;
+}
+.top {
+  margin-top: 2%;
+}
+.top h1:nth-child(2) {
+  float: right;
+}
+.dashrow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0%;
+}
+.points {
+  display: flex;
+  height: 12vw;
+  margin-top: 2%;
+  border-radius: 14px;
+  flex: 0 1 50%;
+}
+.fp {
+  border-radius: 14px 0px 0px 14px;
+}
+.bp {
+  border-radius: 0px 14px 14px 0px;
+}
+.bp:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 70%;
+  width: 1px; /* or 100px */
+  border-left: 1px solid white;
+}
+.points div {
+  flex: 0 1 50%;
+  background-color: #2e1f39;
+  position: relative;
+  padding: 5% 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.points h1:not(.numbr) {
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.5vw;
+}
+.numbr {
+  font-size: 2.5vw;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+}
+a:visited {
+  color: white;
+}
+.barracks h1 {
+  font-size: 2.4vw;
+  font-weight: 500;
+  color: white;
+  text-align: start;
+}
+
+.dashrow > div + div {
+  margin-left: 4%;
+}
+.dashrow + .dashrow {
+  margin-top: 2%;
+}
+.barracks {
+  flex: 1 1 50%;
+  background-color: #1e0f29;
+  position: relative;
+  padding: 2% 1%;
+  border-radius: 14px;
+}
+.barracks h1 {
+  margin-bottom: 5%;
+}
+.barracks .row {
+  padding: 0px 20px;
+}
+.barracks .inventroop {
+  min-height: 0px;
+  padding: 2.5% 1%;
+  min-width: 23%;
+}
+.barracks .inventroop p {
+  font-size: 1.2vw;
+}
+.barracks .inventroop p + p {
+  margin-top: 20px;
+  font-size: 2vw;
+}
+.barracks img {
+  width: 3vw;
+}
+.barracks h1 {
+  margin-left: 20px;
+}
+.barracks .number-input {
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  margin-top: 0%;
+  transform: translateY(0%);
+}
+.barracks h3 {
+  color: white;
+}
+.barracks input[type="submit"] {
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  padding: 0.6vw 3vw;
+  color: #ffffff;
+  z-index: 1;
+  cursor: pointer;
+}
+.dashboard .number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 5rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+.barracks .middle h3 {
+  margin-bottom: 0px;
+  font-size: 1rem;
+}
+.right {
+  display: flex;
+  height: 12vw;
+  margin-top: 2%;
+  border-radius: 14px;
+  flex: 0 1 50%;
+  justify-content: space-evenly;
+}
+.right .points {
+  margin-top: 0%;
+  flex: 1 1 60%;
+}
+.powerup {
+  display: flex;
+  border-radius: 14px;
+  flex: 1 1 40%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+  background-color: #2e1f39;
+  padding: 2% 1%;
+  border-radius: 14px;
+  text-align: center;
+}
+.right > div + div {
+  margin-left: 5%;
+}
+.powerup img {
+  height: 50%;
+  width: 30%;
+}
+.powerup h1 {
+  font-size: 1.5vw;
+}
+.powerup h3 {
+  color: #578b32;
+  font-size: 1.2vw;
+  font-weight: 400;
+}
+.yaar {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  flex: 0 1 50%;
+  background-color: #2e1f39;
+  position: relative;
+  justify-content: space-evenly;
+}
+.yaar h1 {
+  font-size: 1.2vw;
+  color: white;
+  text-align: center;
+  margin-top: 2.5%;
+}
+.yaar .points {
+  height: auto;
+}
+.yaar > h1 {
+  font-size: 1.5vw;
+  margin-top: 5%;
+}
+.yaar .bp,
+.yaar .fp {
+  padding: 5% 0%;
+}
+.yaar .fp h1,
+.yaar .bp h1 {
+  font-size: 1.5vw;
+}
+.barracks .inputz {
+  padding: 0px;
+}
+.number-input input[type="number"] {
+  font-family: "Red Hat Display";
+  max-width: 5rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  height: auto;
+  padding: 0.3rem;
+}
+.barracks form {
+  padding: 0% 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.barracks input[type="submit"] {
+  width: 25%;
+  height: 15%;
+}
+.barracks:nth-child(2) {
+  padding: 0px;
+}
+.countdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  background-color: #1e1e1e;
+  margin: 10px;
+  font-size: 18px;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.box span {
+  font-size: 18px;
+  font-weight: 400;
+  color: #578b32;
+  text-align: center;
+  letter-spacing: 2px;
+  background-color: transparent;
+}
+.blinkingCursor {
+  font-weight: lighter;
+  color: #578b32;
+}
+@media only screen and (max-width: 1400px) {
+  .barracks form {
+    padding: 0px 20px;
+  }
+}
+.leadtop h1 {
+  display: inline-block;
+}
+.leadtop h1:nth-child(2) {
+  float: right;
+  text-align: right;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .inventroop img {
+    width: 10vw;
+  }
+  .top {
+    margin-top: 5%;
+  }
+  .barracks form h1 {
+    font-size: 8vw;
+  }
+  .inputz {
+    margin-top: 10%;
+  }
+  .barracks input[type="submit"] {
+    margin: 10% 0%;
+    font-size: 18px;
+    padding: 2vw 3vw;
+  }
+  .last {
+    width: 100%;
+  }
+  .last .middle {/*life is roblox*/
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .points h1 + h1 {
+    margin-top: 20%;
+  }
+  .points h1:not(.numbr) {
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    font-size: 3.8vw;
+  }
+  .yaar {
+    margin-left: 5% !important;
+  }
+  .yaar > h1 {
+    font-size: 5vw;
+  }
+  .powerup h3 {
+    font-size: 4vw;
+    font-weight: 500;
+  }
+  .powerup h1 {
+    font-size: 4vw;
+    margin-top: -8%;
+  }
+  .dashrow + .dashrow {
+    margin-top: 5%;
+  }
+  .inventroop p {
+    font-size: 3vw !important;
+  }
+  .inventroop {
+    margin-bottom: 5%;
+  }
+  .barracks img {
+    width: 8vw;
+  }
+  .barracks h1 {
+    font-size: 5vw;
+    margin-top: 5%;
+  }
+  .barracks + .barracks {
+    margin-top: 5%;
+  }
+  .yaar h1 + h1 {
+    margin-top: 0px;
+    font-size: 4vw !important;
+  }
+  .yaar .bp,
+  .yaar .fp {
+    padding: 15% 0%;
+  }
+  .numbr {
+    font-size: 6vw;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+  }
+  .top h1 {
+    font-size: 5vw;
+    width: 40%;
+  }
+  .top {
+    height: auto;
+  }
+  .dashrow {
+    flex-wrap: wrap;
+  }
+  .points,
+  .right {
+    flex: 0 0 100%;
+    height: auto;
+    margin-top: 5%;
+  }
+  .dashrow div + div {
+    margin-left: 0px;
+  }
+  .barracks .inventroop p + p {
+    margin-top: 0px;
+  }
+  .sidebyside {
+    display: flex;
+    width: 80%;
+    position: relative;
+    margin-left: -5%;
+  }
+  .question {
+    flex: 0 0 100%;
+  }
+  .botum {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-30%);
+  }
+
+  .buytr {
+    font-size: 18px;
+    padding: 1.5vw 8vw;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  .bal {
+    width: 20%;
+  }
+  .switcher {
+    width: 60%;
+  }
+  .iteminfo p {
+    font-size: 5vw;
+  }
+  .shopitems {
+    display: block;
+    margin-top: 0%;
+  }
+  .shopitem + .shopitem {
+    margin-left: 10%;
+  }
+  .shopitem {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+  .shopitem h3 {
+    width: 80%;
+    margin-left: 10%;
+    font-size: 4vw;
+    margin-bottom: 5%;
+    margin-top: 10%;
+  }
+  .twodivs {
+    display: block;
+  }
+  .inputz {
+    display: block;
+    text-align: center;
+  }
+  .mymodal {
+    height: auto;
+  }
+  .inventory h1,
+  .deploy h1 {
+    margin: 5vh 0px;
+  }
+  .deploy input[type="submit"] {
+    font-size: 19px;
+    padding: 2vw 4vw;
+    border-radius: 8px;
+    margin-top: 5%;
+  }
+  .mymodal > h1 {
+    font-size: 32px;
+  }
+  .inventroop img {
+    margin-top: 0px;
+  }
+  .inventroop p + p {
+    margin-top: 0px;
+    font-size: 32px !important;
+    line-height: 44px;
+  }
+  .inventroop p {
+    font-size: 18px !important;
+  }
+  .mymodal {
+    position: absolute;
+  }
+  .mymodal .close {
+    font-size: 5vw;
+    top: 2vh;
+  }
+  .heading {
+    font-size: 44px;
+  }
+  .inventroop {
+    min-height: 200px;
+  }
+  .number-input {
+    background: transparent;
+    border: none;
+    display: inline-flex;
+    margin-top: 0%;
+    transform: translateY(0%);
+  }
+  .atkbtn {
+    font-size: 12px;
+    padding: 1.5vw 3vw;
+    border-radius: 8px;
+  }
+  #questionz {
+    padding: 10vh 10%;
+  }
+  .question {
+    width: 100%;
+  }
+  .question:not(:first-child) {
+    margin-left: 0%;
+    margin-top: 10%;
+  }
+  .qmodal {
+    width: 90vw;
+  }
+  .sidebyside input[type="text"] {
+    font-size: 18px;
+    flex-grow: 2;
+  }
+  .sidebyside button {
+    font-size: 18px;
+    padding: 1vw 3vw;
+    flex-grow: 1;
+  }
+  .lb {
+    font-size: 28px;
+    line-height: 60px;
+    width: 49%;
+  }
+  .leadtop h1:nth-child(2) {
+    float: right;
+    text-align: right;
+    font-size: 12px;
+    line-height: 60px;
+  }
+  .qtext {
+    font-size: 18px;
+  }
+  .attacher {
+    padding: 1.8vw 2.4vw;
+  }
+  .tablecontain {
+    padding: 2% 2%;
+    margin-top: 10vh;
+  }
+  tr {
+    text-align: center;
+  }
+  th {
+    padding: 8px;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    background-color: #101010;
+  }
+  td {
+    padding: 8px;
+    font-family: "Red Hat Display";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+  }
+  table {
+    color: white;
+    width: 100%;
+    border: none;
+    border-spacing: 0px;
+  }
+  .navlogo {
+    display: none;
+  }
+  nav {
+    display: grid;
+    place-items: center;
+  }
+  ul {
+    list-style-type: none;
+    margin-right: 10px;
+  }
+  li {
+    float: right;
+    margin-top: 4vh;
+    transform: translateY(-100%);
+    font-size: 12px;
+  }
+  li:not(:last-child) {
+    margin-left: 25px;
+  }
+  .active:after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 4px;
+    width: 80%;
+    margin: 5px 10%;
+    border-radius: 12px;
+    background-color: #578b32;
+  }
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 10px 150px #111;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(95, 47%, 37%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+.attack .victimname {
+  
+  margin-top: 2%;
+  background-color: #f8fff4;
+  color: #151515;
+  border: none;
+  font-size: 20px;
+  padding: 4px 8px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: "Red Hat Display";
+  
+}
+.attack .victimname ::-ms-input-placeholder {
+  color: #151515
+}
+.attack input[type="submit"] {
+  
+  margin-top: 2%;
+  background-color: #578b32;
+  color: #f8fff4; 
+  border: none;
+  font-size: 20px;
+  padding: 4px 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: "Red Hat Display";
+}
+.qbox {
+  background-color: #262626;
+  padding-top: 2%;
+  padding-left: 2%;
+  border-radius: 14px 14px 14px 14px;
+  
+}
+.sidebyside1 {
+  background-color: #262626;
+  border-radius: 14px 0px 0px 14px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  width: 80%;
+  padding-left: 10%;
+  padding-bottom: 10%;
+}
+.sidebyside1 input[type="text"] {
+  font-size: 18px;
+  flex-grow: 2;
+  flex-grow: 3;
+  background: #cccc;
+  border-radius: 14px 0px 0px 14px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  padding: 10px 10px;
+  color: #1e0f29;
+  opacity: 0.8;
+}
+.sidebyside1 button {
+  font-size: 18px;
+  padding: 1vw 3vw;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: #578b32;
+  border-radius: 14px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 29px;
+  /* padding: 0.6vw 1.2vw; */
+  color: #ffffff;
+  margin-left: -10px;
+  z-index: 1;
+  cursor: pointer;
+}
