@@ -30,7 +30,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
   const existingLogEntry = await Log.findOne({
     qtitle: req.body.title,
     solver: req.team.email,
-    createdAt: { $gte: new Date() - 11000 }, // Check within the last 11 seconds
+    time: { $gte: new Date() - 11000 }, // Check within the last 11 seconds
   });
 
   if (existingLogEntry) {
@@ -43,9 +43,14 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
     });
     try {
       const logged = await activity.save();
+      console.log("Log saved successfully", logged);
     } catch (error) {
-      res.send("noobs");
+      console.error("Error saving log:", error);
+      res.status(500).send("Error saving log");
     }
+    //save a log of the question and answer in the database write code
+
+
     
     const question = await Questions.findOne({
       answer: req.body.ans,
