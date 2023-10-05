@@ -8,7 +8,7 @@
 
   // Define the rate limit options (adjust as needed)
   const apiLimiter = rateLimit({
-    windowMs: 7000, // 1 minute window
+    windowMs: 11000, // 1 minute window
     max: 1, // Limit each IP to 5 requests per minute
     message: "Too many requests from this IP, please try again later.",
   });
@@ -100,6 +100,9 @@
       }
 
       res.redirect("/questions");
+      setTimeout(()=>{
+        console.log("Answered");
+      },1000);
     }
   });
 
