@@ -1,34 +1,41 @@
-  const router = require("express").Router();
-  const verify = require("../middleware/tokenVerification");
-  const Team = require("../models/Team");
-  const Log = require("../models/Log");
-  const Questions = require("../models/Questions");
-  const mongoose = require("mongoose");
-  const rateLimit = require("express-rate-limit");
+const router = require("express").Router();
+const verify = require("../middleware/tokenVerification");
+const Team = require("../models/Team");
+const Log = require("../models/Log");
+const Questions = require("../models/Questions");
+const mongoose = require("mongoose");
+const rateLimit = require("express-rate-limit");
 
-  // Define the rate limit options (adjust as needed)
-  const apiLimiter = rateLimit({
-    windowMs: 11000, // 1 minute window
-    max: 1, // Limit each IP to 5 requests per minute
-    message: "Too many requests from this IP, please try again later.",
+// Define the rate limit options (adjust as needed)
+const apiLimiter = rateLimit({
+  windowMs: 11000, // 11 seconds window (slightly more than your setTimeout)
+  max: 1, // Limit each IP to 1 request within the window
+  message: "Too many requests from this IP, please try again later.",
+});
+
+require("dotenv").config();
+
+router.post("/answer/", verify, apiLimiter, async (req, res) => {
+  let fppoints = 0;
+  let bppoints = 0;
+  var ans = " ";
+  const buyer = await Team.findOne({ _id: req.team._id });
+  fppoints = buyer.questions.length;
+
+  if (req.body.ans !== "") {
+    ans = req.body.ans;
+  }
+
+  // Check if this user has already answered the same question within the rate limit window
+  const existingLogEntry = await Log.findOne({
+    qtitle: req.body.title,
+    solver: req.team.email,
+    createdAt: { $gte: new Date() - 11000 }, // Check within the last 11 seconds
   });
-  
-  require("dotenv").config();
 
-  router.post("/answer/", verify,apiLimiter, async (req, res) => {
-    setTimeout(()=>{
-      console.log("Answered");
-    },10000);
-    let fppoints = 0;
-    let bppoints = 0;
-    var ans = " ";
-    const buyer = await Team.findOne({ _id: req.team._id });
-    fppoints = buyer.questions.length;
-
-    if(req.body.ans !== ""){
-      ans = req.body.ans;
-    }
-
+  if (existingLogEntry) {
+    res.send("You have already answered this question within the rate limit window.");
+  } else {
     const activity = new Log({
       qtitle: req.body.title,
       sol: ans,
@@ -39,35 +46,20 @@
     } catch (error) {
       res.send("noobs");
     }
+    
     const question = await Questions.findOne({
       answer: req.body.ans,
       title: req.body.title,
     }).catch((err) => {
       console.log(err);
     });
+
     if (!question) {
-      
-     
-      
-      if(buyer.jumpscare === true){
-      
-        res.send(`
-        <html>
-          <body style="background-color: black">
-            <img src = "https://gifdb.com/images/high/huggy-wuggy-jumpscare-lnvrp48ny1ask4xq.webp" width="100%" height="100%"/>
-            <script>
-              setTimeout(function () {
-                window.location.href = "/questions";
-              }, 2000);
-            </script>
-          </body>
-        </html>
-      `);
-      }
-      else{
+      if (buyer.jumpscare === true) {
+        res.send(/* ... */);
+      } else {
         res.redirect("/questions/?question=" + req.body.title);
       }
-    
     } else if (question && !buyer.questions.includes(question.title)) {
       console.log(question.title);
       const activity = new Log({
@@ -81,29 +73,27 @@
       } catch (error) {
         res.send("noobs");
       }
+      
       Team.updateOne(
         { _id: req.team._id },
         {
           $addToSet: { questions: question.title },
-          $inc: { bp: question.points},
+          $inc: { bp: question.points },
           $set: {
-            fp : fppoints+1
+            fp: fppoints + 1
           }
         },
         { multi: true },
-        answercallback
-      );
-      function answercallback(err, num) {
-        if (err) {
-          console.log(err);
+        (err, num) => {
+          if (err) {
+            console.log(err);
+          }
         }
-      }
+      );
 
       res.redirect("/questions");
-      setTimeout(()=>{
-        console.log("Answered");
-      },1000);
     }
-  });
+  }
+});
 
-  module.exports = router;
+module.exports = router;
