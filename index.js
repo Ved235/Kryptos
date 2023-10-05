@@ -87,7 +87,7 @@ app.use("/", apiLimiter);
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });
-
+  
 app.get("/register", (req, res) => {
   res.render("register.ejs", { active: "register" });
 });

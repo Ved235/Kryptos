@@ -67,7 +67,8 @@ router.post("/answer/", verify, async (req, res) => {
       { _id: req.team._id },
       {
         $addToSet: { questions: question.title },
-        $inc: { bp: question.points, fp: 500 },
+        $inc: { bp: question.points},
+        $set: {fp : {$size : questions}}
       },
       { multi: true },
       answercallback
