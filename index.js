@@ -10,7 +10,7 @@ app.use(session({
 }));
 const apiLimiter = rateLimit({
   windowMs: 5000, 
-  max: 14, // Limit each IP to 5 requests per minute
+  max: 5000, // Limit each IP to 5 requests per minute
   message: "Too many requests from this IP, please try again later.",
 });
 const path = require("path");
@@ -87,7 +87,7 @@ app.use("/", apiLimiter);
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });
-  
+
 app.get("/register", (req, res) => {
   res.render("register.ejs", { active: "register" });
 });
