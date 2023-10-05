@@ -66,6 +66,7 @@
       }
     
     } else if (question && !buyer.questions.includes(question.title)) {
+      console.log(question.title);
       const activity = new Log({
         qtitle: question.title,
         sol: req.body.ans,
@@ -96,7 +97,7 @@
       }
       setTimeout(()=>{
         console.log("Answered");
-      },5000);
+      },10000);
       res.redirect("/questions");
     }
   });
