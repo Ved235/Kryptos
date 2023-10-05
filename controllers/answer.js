@@ -9,9 +9,11 @@
 
   router.post("/answer/", verify, async (req, res) => {
     let fppoints = 0;
+    let bppoints = 0;
     var ans = " ";
     const buyer = await Team.findOne({ _id: req.team._id });
     fppoints = buyer.questions.length;
+
     if(req.body.ans !== ""){
       ans = req.body.ans;
     }
@@ -24,7 +26,7 @@
     try {
       const logged = await activity.save();
     } catch (error) {
-      res.send(error);
+      res.send("noobs");
     }
     const question = await Questions.findOne({
       answer: req.body.ans,
@@ -65,7 +67,7 @@
       try {
         const logged = await activity.save();
       } catch (error) {
-        res.send(error);
+        res.send("noobs");
       }
       Team.updateOne(
         { _id: req.team._id },
