@@ -94,7 +94,9 @@
           console.log(err);
         }
       }
-
+      setTimeout(()=>{
+        console.log("Answered");
+      },5000);
       res.redirect("/questions");
     }
   });
