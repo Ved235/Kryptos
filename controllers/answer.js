@@ -4,10 +4,18 @@
   const Log = require("../models/Log");
   const Questions = require("../models/Questions");
   const mongoose = require("mongoose");
+  const rateLimit = require("express-rate-limit");
 
+  // Define the rate limit options (adjust as needed)
+  const apiLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute window
+    max: 5, // Limit each IP to 5 requests per minute
+    message: "Too many requests from this IP, please try again later.",
+  });
+  
   require("dotenv").config();
 
-  router.post("/answer/", verify, async (req, res) => {
+  router.post("/answer/", verify,apiLimiter, async (req, res) => {
     let fppoints = 0;
     let bppoints = 0;
     var ans = " ";
