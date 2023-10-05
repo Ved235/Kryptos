@@ -6,22 +6,18 @@ const crypto = require('crypto');
 
 router.post("/powerup", verify, async (req, res) => {
   if (
-    req.body.crys1 < 0 ||
-    req.body.crys2 < 0 ||
-    req.body.crys3 < 0 
+    req.body.crys1 < 0 
+
   ) {
     res.send("no");
   } else {
-    let totalCost =
-      req.body.crys1 * 1000+
-      req.body.crys2 * 1000 +
-      req.body.crys3 * 1000;
+    let totalCost =req.body.crys1 * 1000;
+
      
     const buyer = await Team.findOne({ email: req.team.email });
     if (
-      req.body.crys1 == 0 &&
-      req.body.crys2 == 0 &&
-      req.body.crys3 == 0 
+      req.body.crys1 == 0 
+
  
     ) {
       return res.redirect("/shop/?error=buyless");
@@ -39,24 +35,26 @@ router.post("/powerup", verify, async (req, res) => {
     else if (buyer.bp >= totalCost) {
       const setter = [
         req.body.crys1 === "1" ? true : false,
-        req.body.crys2 === "1" ? true : false,
-        req.body.crys3 === "1" ? true : false,
+
  
       ];
+      const category = [0, 1];
       const listOfPowerupsSelf = ["hintspire","gamble"];
      
       var powerupself = "";
-      var powerupattack = "";
+      var currentPowerup =0;
       if(req.body.crys1 === "1"){
         var random = Math.floor(Math.random() * listOfPowerupsSelf.length);
         powerupself = listOfPowerupsSelf[random];
+        random = Math.floor(Math.random() * category.length);
+        currentPowerup = category[random];
       }
  
       if (setter.filter((v) => v).length > 1) {
         
         return res.redirect("/shop/?error=powerup");
       } else {
-        const currentPowerup = setter.indexOf(true);
+        
        
         // if (buyer.discountsLeft === 1) {
         //   Team.updateOne(
@@ -86,11 +84,11 @@ router.post("/powerup", verify, async (req, res) => {
          
       
 
-        if(currentPowerup == 1){
+        if(currentPowerup == 0){
           res.redirect("/shop/?error=entervictim");
           
         
-        }else if(currentPowerup == 0){
+        }else if(currentPowerup == 1){
 
           Team.updateOne(
             { email: req.team.email },

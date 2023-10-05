@@ -152,7 +152,7 @@ form h1 {
 nav {
   height: 10vh;
   width: 100%;
-  background-color: #15081e;
+  background-color: #190c22;
   position: absolute;
   z-index: 1;
 }
@@ -234,7 +234,7 @@ h1 {
 .mainbtns {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #78bd47;
+  background-color: #578b32;
   border: none;
   color: white;
   padding: 15px 30px;
@@ -244,7 +244,7 @@ h1 {
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: 0 0 10px #78bd47;
+  /* box-shadow: 0 0 10px #78bd47; */
 }
 .lb {
   font-family: "Red Hat Display";

@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const verify = require("../middleware/tokenVerification");
 const Team = require("../models/Team");
+var successfullAttack = false;
 
 router.post("/attack", verify, async (req, res) => {
   const powerupattack = req.body.powerupType;
-
+  console.log(powerupattack);
+  console.log(req.body.victimname);
   try {
     const defender = await Team.findOne({ name: req.body.victimname });
 
@@ -34,8 +36,8 @@ router.post("/attack", verify, async (req, res) => {
           },
         }
       );
-
-      res.redirect("/dashboard");
+   
+      res.redirect("/shop/?error=success");
       }
       else{
         console.log("Already under attack");

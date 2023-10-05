@@ -1,91 +1,73 @@
 <%- include('headerin'); -%>
 <div id="questionz">
   <h1 class="heading">Questions</h1>
-  <% if (Date.now() <new Date("Oct 1, 2020 00:00:00")) { %> //change to > sign
+  <% if (Date.now() < new Date("Oct 1, 2020 00:00:00")) { %> //change to > sign
   <div id="thank">
     <h1 style="text-align: center; color: white">Thanks for playing!</h1>
     <br />
-
   </div>
   <% } else { %>
   <div class="questions">
-    <% locals.questions.forEach( function (element){ %>
-    <div <% if (locals.team.questions.includes(element.title)) { %>
-      style="background:#578b32;cursor:default" <% }else{ %>
-      onclick="openModal('<%- locals.questions.indexOf(element) %>')"<% }%>
-      class="question ques<%- locals.questions.indexOf(element) %> " >
-      <div class="qcontent">
-        <p><%- element.title %></p>
-        <p><%- element.points %></p>
+    <% let unansweredQuestionFound = false; %>
+    <% locals.questions.forEach(function (element, index) { %>
+    <% if (locals.team.questions.includes(element.title)) { %>
+      <div style="background:#578b32;cursor:default" class="question ques<%- index %> ">
+        <div class="qcontent">
+          <p><%- element.title %></p>
+          <p><%- element.points %></p>
+        </div>
       </div>
-    </div>
-    <% }) %> <% locals.questions.forEach( function (element){ %> <% if
-    (!locals.team.questions.includes(element.title)) { %> <div id="pop<%-
-    locals.questions.indexOf(element) %>" class="qmodal" <% if
-    (locals.curr===element.title){ %> style="display: block" <%}%>>
-    <form action="/answer" method="POST">
-      <p
-        class="close"
-        onclick="closeModal('<%= locals.questions.indexOf(element) %>')"
-      >
-        &#10060;
-      </p>
-      <div class="qinfo">
-        <p>
-          <input 
-            type="hidden"
-            value="<%= element.title%>"
-            name="title"
-            class="defender"
-            readonly
-          />
-        </p>
-        <p class="qhead"><%- element.title %></p>
-        <p class="qtext" style="margin-bottom: 144px">
-          <%- element.question %>
-        </p>
-        <% if (element.attachment!=""){ %>
-        <a
-          class="attacher"
-          href="/questionfiles/<%-(element.attachment)%>"
-          download="<%- element.attachment %>"
-          target="_blank"
-        >
-          <%- element.attachment %>
-        </a>
-        <% } %>
+    <% } else if(!unansweredQuestionFound){ %>
+      <div onclick="openModal('<%- index %>')" class="question ques<%- index %> ">
+        <div class="qcontent">
+          <p><%- element.title %></p>
+          <p><%- element.points %></p>
+        </div>
+
       </div>
-      <div class="sidebyside">
-        <input type="text" name="ans" <% if (locals.curr===element.title){ %>
-        value="Incorrect" style="color:red;border:1px solid red" <%}%>/>
-        <button <% if (locals.team.sabotage===true){ %>
-          disabled style="background-color:grey" <%}%> id="myButtonn">Submit</button>
-      </div>
-    </form>
+      <% unansweredQuestionFound = true; %>
+    <% } %>
+    <% }) %>
   </div>
-  <% } }) %>
+  <% if (unansweredQuestionFound) { %>
+    <!-- Display the first unanswered question -->
+    <div id="pop<%- locals.questions.findIndex(q => !locals.team.questions.includes(q.title)) %>" class="qmodal" <% if (locals.curr === locals.questions.find(q => !locals.team.questions.includes(q.title)).title) { %> style="display: block" <% } %>>
+      <form action="/answer" method="POST">
+        <p class="close" onclick="closeModal('<%- locals.questions.findIndex(q => !locals.team.questions.includes(q.title)) %>')">&#10060;</p>
+        <div class="qinfo">
+          <p>
+            <input type="hidden" value="<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).title %>" name="title" class="defender" readonly />
+          </p>
+          <p class="qhead"><%- locals.questions.find(q => !locals.team.questions.includes(q.title)).title %></p>
+          <p class="qtext" style="margin-bottom: 144px"><%- locals.questions.find(q => !locals.team.questions.includes(q.title)).question %></p>
+          <% if (locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment !== "") { %>
+            <a class="attacher" href="/questionfiles/<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" download="<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" target="_blank">
+              <%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>
+            </a>
+          <% } %>
+        </div>
+        <div class="sidebyside">
+          <input type="text" name="ans" <% if (locals.team.sabotage === true) {%> placeholder="You have been sabotaged" <%} %><% if (locals.curr === locals.questions.find(q => !locals.team.questions.includes(q.title)).title) { %> value="Incorrect" style="color:red;border:1px solid red" <% } %>/>
+          <button <% if (locals.team.sabotage === true) { %> disabled style="background-color:grey" <% } %> id="myButtonn">Submit</button>
+        </div> 
+      </form>
+      
+      
+    </div>
+    <% unansweredQuestionFound = false; %>
+  <% } %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="/js/cta.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Get a reference to the button by its id
       const myButton = document.getElementById("myButtonn");
-    
-      // Add a click event listener to the button
       myButton.addEventListener("click", function () {
-    
-      
+        // Handle button click event
       });
     });
   </script>
   <script>
-    // ScrollReveal({
-    //   reset: false,
-    // }).reveal(".question", {
-    //   delay: 50,
-    // });
     $(document).ready(function () {
       $('input[name = "ans"]').click(function (e) {
         e.preventDefault();
@@ -108,6 +90,6 @@
       document.getElementById("pop" + num).style.display = "none";
     }
   </script>
-  <% }%> <%- include('footer'); -%>
+  <% } %>
+  <%- include('footer'); -%>
 </div>
-
