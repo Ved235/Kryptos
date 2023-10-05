@@ -8,11 +8,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
-const apiLimiter = rateLimit({
-  windowMs: 5000, 
-  max: 5000, // Limit each IP to 5 requests per minute
-  message: "Too many requests from this IP, please try again later.",
-});
+
 const path = require("path");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
@@ -83,7 +79,7 @@ app.use("/", defRoute);
 app.use("/", jumpscareRoute);
 app.use("/", gamble);
 app.use("/", GambleansRoute);
-app.use("/", apiLimiter);
+
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });
