@@ -16,6 +16,9 @@
   require("dotenv").config();
 
   router.post("/answer/", verify,apiLimiter, async (req, res) => {
+    setTimeout(()=>{
+      console.log("Answered");
+    },10000);
     let fppoints = 0;
     let bppoints = 0;
     var ans = " ";
@@ -95,9 +98,7 @@
           console.log(err);
         }
       }
-      setTimeout(()=>{
-        console.log("Answered");
-      },10000);
+
       res.redirect("/questions");
     }
   });
