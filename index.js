@@ -54,7 +54,9 @@ mongoose.connect(
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(helmet({ contentSecurityPolicy: false }));
