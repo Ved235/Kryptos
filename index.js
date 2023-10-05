@@ -12,7 +12,10 @@ app.use(session({
 const path = require("path");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
-
+const limiter = rateLimit({
+  windowMs: 5000, // 1 minute
+  max: 1, // Limit each IP to 100 requests per minute
+});
 // cronjobs
 const powerupManager = require("./jobs/powerups");
 powerupManager.start();
@@ -79,7 +82,7 @@ app.use("/", defRoute);
 app.use("/", jumpscareRoute);
 app.use("/", gamble);
 app.use("/", GambleansRoute);
-
+app.use('/answer/',limiter);
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });
