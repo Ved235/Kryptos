@@ -55,7 +55,7 @@
         res.redirect("/questions/?question=" + req.body.title);
       }
     
-    } else if (question && !req.team.questions.includes(question.title)) {
+    } else if (question && !buyer.questions.includes(question.title)) {
       const activity = new Log({
         qtitle: question.title,
         sol: req.body.ans,
