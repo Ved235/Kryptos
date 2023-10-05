@@ -8,6 +8,7 @@
   require("dotenv").config();
 
   router.post("/answer/", verify, async (req, res) => {
+    let fppoints = 0;
     var ans = " ";
     if(req.body.ans !== ""){
       ans = req.body.ans;
@@ -32,6 +33,7 @@
     if (!question) {
       
       const buyer = await Team.findOne({ _id: req.team._id });
+      fppoints = buyer.questions.length;
       if(buyer.jumpscare === true){
       
         res.send(`
@@ -68,7 +70,9 @@
         {
           $addToSet: { questions: question.title },
           $inc: { bp: question.points},
-          fp : {$size : "$questions"}
+          $set: {
+            fp : fppoints
+          }
         },
         { multi: true },
         answercallback
