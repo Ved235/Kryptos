@@ -1,14 +1,18 @@
 const express = require("express");
 const session = require('express-session');
 const cors = require('cors');
-
+const rateLimit = require("express-rate-limit");
 const app = express();
 app.use(session({
   secret: 'e84b0a9720e4198391ffce850d2acbf4d6f4ce3bf628f2ddc7d3f1e8ab328912', // Change this to a strong, random secret
   resave: false,
   saveUninitialized: true,
 }));
-
+const apiLimiter = rateLimit({
+  windowMs: 5000, 
+  max: 14, // Limit each IP to 5 requests per minute
+  message: "Too many requests from this IP, please try again later.",
+});
 const path = require("path");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
@@ -79,6 +83,7 @@ app.use("/", defRoute);
 app.use("/", jumpscareRoute);
 app.use("/", gamble);
 app.use("/", GambleansRoute);
+app.use("/answer", apiLimiter);
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });

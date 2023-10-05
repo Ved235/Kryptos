@@ -66,7 +66,7 @@ router.post("/answer/", verify, async (req, res) => {
     Team.updateOne(
       { _id: req.team._id },
       {
-        $push: { questions: question.title },
+        $addToSet: { questions: question.title },
         $inc: { bp: question.points, fp: 500 },
       },
       { multi: true },
