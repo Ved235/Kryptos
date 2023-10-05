@@ -4,18 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js"
+
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/divided7/dcrypt.git"
-  },
-  "author": "Divyansh Singh",
+  "author": "Vedant Singhal",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/divided7/dcrypt/issues"
-  },
-  "homepage": "https://github.com/divided7/dcrypt#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.24.0",

@@ -672,7 +672,7 @@ input[type="number"]:focus {
   flex: 1 1 50%;
   text-align: center;
   position: relative;
-  margin-top: 12rem;
+  
 }
 .iteminfo p:first-of-type {
   display: block;
@@ -688,9 +688,10 @@ img {
   font-size: 0.8vw;
 }
 .botum {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0px;
   width: 100%;
+  margin-left: 9rem;;
 }
 .shopitem h3 {
   font-weight: 400;
@@ -714,7 +715,6 @@ img {
 .buytr {
   flex-grow: 1;
   float: right;
-  margin-top: 2%;
   border: none;
   outline: none;
   background: #578b32;
@@ -1135,7 +1135,7 @@ a:visited {
     flex: 0 0 100%;
   }
   .botum {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     top: 50%;
     transform: translateY(-30%);
@@ -1145,7 +1145,8 @@ a:visited {
     font-size: 18px;
     padding: 1.5vw 8vw;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-left: -25px;
   }
   .bal {
     width: 20%;
