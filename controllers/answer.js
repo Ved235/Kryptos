@@ -8,8 +8,8 @@
 
   // Define the rate limit options (adjust as needed)
   const apiLimiter = rateLimit({
-    windowMs: 60 * 1000, // 1 minute window
-    max: 5, // Limit each IP to 5 requests per minute
+    windowMs: 5000, // 1 minute window
+    max: 1, // Limit each IP to 5 requests per minute
     message: "Too many requests from this IP, please try again later.",
   });
   
