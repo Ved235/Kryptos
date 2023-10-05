@@ -83,7 +83,7 @@ app.use("/", defRoute);
 app.use("/", jumpscareRoute);
 app.use("/", gamble);
 app.use("/", GambleansRoute);
-app.use("/answer", apiLimiter);
+app.use("/", apiLimiter);
 app.get("/", (req, res) => {
   res.render("index.ejs", { active: "home" });
 });
