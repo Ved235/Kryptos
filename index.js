@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require('express-session');
+const cors = require('cors');
 
 const app = express();
 app.use(session({
@@ -52,7 +53,7 @@ mongoose.connect(
     console.log("connected to db");
   }
 );
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
