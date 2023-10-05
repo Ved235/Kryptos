@@ -689,7 +689,7 @@ img {
 }
 .botum {
   /* position: absolute; */
-  bottom: 0px;
+  bottom: 10px;
   width: 100%;
   /* margin-left: 9rem;; */
 }
@@ -725,11 +725,11 @@ img {
   line-height: 29px;
   padding: 0.6vw 2vw;
   color: #ffffff;
-  /* margin-right: 30px; */
   z-index: 1;
   cursor: pointer;
   box-shadow: 0 0 10px #78bd47;
   align-items: center;
+  
 }
 .top h1 {
   color: white;
