@@ -72,20 +72,10 @@
       <%if (locals.errors) { %> <%if (locals.errors.includes("discord")) { %>
       <div class="error discord">Please enter a legitimate Discord ID</div>
       <% } %> <% } %>
-      <div style="text-align: center">
-        <div
-          class="g-recaptcha"
-          data-sitekey="6LdE3XsoAAAAAGfxYlOxXtus709iewTcM_tq6rfX"
-          data-theme="dark"
-          style="display: inline-block"
-        ></div>
-      </div>
-      <% if (locals.galatRecaptcha) { %>
-      <p class="error">pls submit :( recaptcha</p>
-      <% } %>
+
       <input class="registrr" type="submit" value="Register" />
     </form>
   </div>
 </div>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <%- include('footer'); -%>

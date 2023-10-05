@@ -33,21 +33,7 @@ router.post(
         name: req.body.name,
       };
     }
-    response = await axios({
-      method: "post",
-      url: "https://www.google.com/recaptcha/api/siteverify",
-      params: {
-        secret: "6LefzcYZAAAAAOpTOSNQ8-JoBwfMeadgHgJt8F-O",
-        response: req.body["g-recaptcha-response"],
-      },
-    });
-    const recap = response.data.success;
-    if (!recap) {
-      return res.render("register.ejs", {
-        galatRecaptcha: true,
-        original: original,
-      });
-    }
+
     const teamRegistered = await Team.findOne({ email: req.body.email });
     if (teamRegistered) {
       return res.render("register.ejs", { alregistered: true });

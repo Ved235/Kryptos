@@ -6,8 +6,7 @@ const validateTeam = (data) => {
     name: Joi.string().max(20).required(),
     discord: Joi.string().max(20).required(),
     email: Joi.string().email().required(),
-    password: Joi.string().max(256).min(8).required(),
-    "g-recaptcha-response": Joi.string().allow(""),
+    password: Joi.string().max(256).min(8).required()
   });
   return teamSchema.validate(data, { abortEarly: false });
 };
