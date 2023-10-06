@@ -238,9 +238,9 @@ table {
 }
 .attacher {
   position: relative;
-  margin-top: -124px;
-  margin-bottom: 124px;
-  float: left;
+  bottom: 3vh;
+  top: 5vh;
+
   clear: both;
   border: none;
   outline: none;
