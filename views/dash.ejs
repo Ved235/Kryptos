@@ -7,18 +7,18 @@
   <div class="dashrow">
     <div class="points">
       <div class="fp">
-        <h1>Flag Points</h1>
+        <h1>XP</h1>
         <h1 class="numbr"><%- locals.team.fp %></h1>
       </div>
       <div class="bp">
-        <h1>Battle Points</h1>
+        <h1>Devil's Favour</h1>
         <h1 class="numbr"><%- locals.team.bp %></h1>
       </div>
     </div>
     <div class="right">
       <div class="powerup">
         <center>
-        <h1>Powerup</h1>
+        <h1>Powerup Cooldown</h1>
         <% if (locals.team.idk===true) { %>
         <img src="/images/shield.svg" alt="shield" />
         <% }else if (locals.team.hintspire===true) { %>
@@ -30,7 +30,7 @@
           <%}else if (locals.team.dp == "sabotage") { %>
             <img src="/images/image-removebg-preview.png" alt="halfprice" style="width: 27%; height: 55%" />
             <%}else { %>
-          <h1>None</h1>
+          <h1 style="font-weight: 500; margin-top: 10px;">None</h1>
         </center>
         <% } %> 
           <% if (locals.team.powerupTimer > 0) { %>
