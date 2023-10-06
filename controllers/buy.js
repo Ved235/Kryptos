@@ -84,7 +84,7 @@ router.post("/powerup", verify, async (req, res) => {
          
       
 
-        if(currentPowerup == 0){
+        if(currentPowerup == 0 || localStorage.getItem(req.team.name) == "jumpscare" || localStorage.getItem(req.team.name) == "sabotage"){
           res.redirect("/shop/?error=entervictim");
           
         
