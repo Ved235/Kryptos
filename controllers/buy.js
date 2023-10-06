@@ -117,7 +117,7 @@ router.post("/powerup", verify, async (req, res) => {
             {
               $set: {
                 [powerupself]: true,
-                powerupTimer: 20,
+                powerupTimer: 30,
               
               },
               $inc: {

@@ -20,7 +20,7 @@ router.post("/attack", verify, async (req, res) => {
           $set: {
             [powerupattack]: true,
    
-            attackCooldown: 60,
+            attackCooldown: 20,
           },
         }
       );
@@ -29,7 +29,7 @@ router.post("/attack", verify, async (req, res) => {
         { email: req.team.email },
         {
           $set: {
-            powerupTimer: 60,
+            powerupTimer: 35,
             tempPowerup: "",
             dp: powerupattack
           },
