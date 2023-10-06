@@ -46,7 +46,7 @@ mongoose.connect(
     useCreateIndex: true,
   },
   () => {
-    console.log("connected to db");
+   
   }
 );
 app.use(cors());

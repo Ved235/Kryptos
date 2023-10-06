@@ -61,7 +61,20 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
 
     if (!question) {
       if (buyer.jumpscare === true) {
-        res.send(/* ... */);
+        res.send(`
+        <html>
+        <body style="background-color: black">
+          <video autoplay>
+            <source src="https://cdn.discordapp.com/attachments/990559782844899418/1159899773151744070/Bonnie_that_Punch_online-video-cutter.com.mp4?ex=6532b3d7&is=65203ed7&hm=4b0fee5368b1a04ebb3cb2e3ac88531c026ab36205d757dcc2c5a1fd097c4e49&">
+          </video>
+          <script>
+            setTimeout(function () {
+              window.location.href = "/questions";
+            }, 4000);
+          </script>
+        </body>
+      </html>
+        `);
       } else {
         res.redirect("/questions/?question=" + req.body.title);
       }
