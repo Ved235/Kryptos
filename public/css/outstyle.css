@@ -18,7 +18,7 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-color: #190c22;
+  background-color: #151515;
   font-family: "Red Hat Display", "sans-serif";
   overflow-x: hidden;
 }
@@ -102,7 +102,7 @@ img:not(.navlogo) {
   margin-left: -10%;
 }
 form {
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   width: 60%;
   margin: 0% auto;
   padding: 5px 60px;
@@ -152,7 +152,7 @@ form h1 {
 nav {
   height: 10vh;
   width: 100%;
-  background-color: #190c22;
+  background-color: #151515;
   position: absolute;
   z-index: 1;
 }

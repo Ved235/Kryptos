@@ -160,7 +160,7 @@ table {
 
 .question {
   height: 200px;
-  background: #2e1f39;
+  background: #2f2f2f;
   display: inline-block;
   border-radius: 15px;
   text-align: center;
@@ -201,7 +201,7 @@ table {
   border-radius: 18px;
   transform: translate(-50%, -50%);
   text-align: center;
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   color: #fff;
 }
 
@@ -772,7 +772,7 @@ img {
 }
 .points div {
   flex: 0 1 50%;
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   position: relative;
   padding: 5% 0%;
   display: flex;
@@ -898,7 +898,7 @@ a:visited {
   flex-direction: column;
   justify-content: space-evenly;
   color: white;
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   padding: 2% 1%;
   border-radius: 14px;
   text-align: center;
@@ -923,7 +923,7 @@ a:visited {
   flex-direction: column;
   border-radius: 14px;
   flex: 0 1 50%;
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   position: relative;
   justify-content: space-evenly;
 }
@@ -1422,8 +1422,8 @@ a:visited {
   }
 }
 div#victimInputModal.modal{
-  background-color: #2e1f39;
-  /* border-color: #2e1f39; */
+  background-color: #2f2f2f;
+  /* border-color: #2f2f2f; */
   border-radius: 14px;
 }
 form.attack input.victimname{
@@ -1440,7 +1440,7 @@ form.attack input.btn{
   border-color: #578b32;
 }
 form.attack input.powerupType{
-  background-color: #2e1f39;
+  background-color: #2f2f2f;
   color: #fff;
   text-align: center;
   font-family: "Red Hat Display", "sans-serif";
