@@ -74,9 +74,9 @@ const teamSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  discountsLeft: {
-    type: Number,
-    default: 0,
+  tempPowerup: {
+    type: String,
+    default: "",
   },
   attackCooldown: {
     type: Number,

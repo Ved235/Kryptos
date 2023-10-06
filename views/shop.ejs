@@ -182,7 +182,7 @@
 
   <script>
     var teamName = '<%= locals.team.name %>';
-    
+    var powreupigot = '<%= locals.team.tempPowerup %>'
 
     <%if (locals.error){ %>
       <% if (locals.error=='buywrong'){ %>
@@ -206,21 +206,13 @@
     <% } 
     else if  (locals.error == 'entervictim' && locals.team.powerupTimer === 0 && locals.team.bp >= 1000) { %>
     
-    const powerupType = document.getElementById('powerupType');
-      const listOfPowerupsAttack = ["jumpscare", "sabotage"];
-      if(localStorage.getItem(teamName) === "" || localStorage.getItem(teamName) === null){
-        const random = Math.floor(Math.random() * listOfPowerupsAttack.length);
-        const powerupattack = listOfPowerupsAttack[random];
-        localStorage.setItem(teamName, powerupattack);
-        powerupType.value = powerupattack;
+        const powerupType = document.getElementById('powerupType');
+     
+    
+
+        powerupType.value = powreupigot;
         var modal = document.getElementById('victimInputModal');
-  modal.style.display = 'block';
-      }else{
-        const powerupattack = localStorage.getItem(teamName);
-        powerupType.value = powerupattack;
-        var modal = document.getElementById('victimInputModal');
-        modal.style.display = 'block';
-      }
+      modal.style.display = 'block';
 
       
         

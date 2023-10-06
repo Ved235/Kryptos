@@ -38,18 +38,20 @@ router.post("/powerup", verify, async (req, res) => {
 
  
       ];
-      const category = [0, 1];
-      const listOfPowerupsSelf = ["hintspire","gamble"];
      
+      const listOfPowerups = ["hintspire","gamble","jumpscare", "sabotage"];
+             
+   
+    
       var powerupself = "";
-      var currentPowerup =0;
+      const currentPowerupAttack = buyer.tempPowerup;
       if(req.body.crys1 === "1"){
-        var random = Math.floor(Math.random() * listOfPowerupsSelf.length);
-        powerupself = listOfPowerupsSelf[random];
-        random = Math.floor(Math.random() * category.length);
-        currentPowerup = category[random];
+        var random = Math.floor(Math.random() * listOfPowerups.length);
+        powerupself = listOfPowerups[random];
       }
- 
+      if(currentPowerupAttack == "jumpscare" || currentPowerupAttack == "sabotage"){
+        powerupself = currentPowerupAttack;
+      }
       if (setter.filter((v) => v).length > 1) {
         
         return res.redirect("/shop/?error=powerup");
@@ -80,15 +82,28 @@ router.post("/powerup", verify, async (req, res) => {
         //     () => {}
         //   );
         // }
-       
-         
-      
 
-        if(currentPowerup == 0 || localStorage.getItem(req.team.name) == "jumpscare" || localStorage.getItem(req.team.name) == "sabotage"){
-          res.redirect("/shop/?error=entervictim");
-          
         
-        }else if(currentPowerup == 1){
+
+        
+     
+        if(powerupself == "jumpscare" || powerupself == "sabotage"){
+          await Team.updateOne(
+            { email: req.team.email },
+            {
+              $set: {
+                tempPowerup: powerupself,
+                
+              
+              }
+            },
+            { multi: true },
+            () => {}
+          );
+          res.redirect("/shop/?error=entervictim");
+
+        
+        }else if(powerupself == "hintspire" || powerupself == "gamble"){
 
           Team.updateOne(
             { email: req.team.email },
