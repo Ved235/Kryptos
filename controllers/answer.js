@@ -85,7 +85,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
           $addToSet: { questions: question.title },
           $inc: { bp: question.points },
           $set: {
-            fp: fppoints + 1
+            fp: 400*(fppoints + 1)
           }
         },
         { multi: true },
