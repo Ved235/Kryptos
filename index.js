@@ -1,13 +1,9 @@
 const express = require("express");
-const session = require('express-session');
+
 const cors = require('cors');
 const rateLimit = require("express-rate-limit");
 const app = express();
-app.use(session({
-  secret: 'e84b0a9720e4198391ffce850d2acbf4d6f4ce3bf628f2ddc7d3f1e8ab328912', // Change this to a strong, random secret
-  resave: false,
-  saveUninitialized: true,
-}));
+
 
 const path = require("path");
 const mongoose = require("mongoose");
