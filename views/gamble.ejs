@@ -28,8 +28,8 @@
             <% if (element.attachment != "") { %>
              <a
                 class="attacher"
-                href="/questionfiles/<%= element.attachment %>"
-                download="<%- element.attachment %>"
+                href="<%= element.attachment %>"
+                download
                 target="_blank"
               >
                 <%- element.attachment %>

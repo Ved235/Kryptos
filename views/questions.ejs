@@ -23,7 +23,7 @@ const istTime = new Date(currentTime.getTime() + (istOffset * 60000));
     <br />
   </div>
   <% } 
-  else if(istTime < new Date("Oct 9, 2023 00:00:00")){%> 
+  else if(istTime > new Date("Oct 9, 2023 00:00:00")){%> 
     <div id="thank">
       <center>
         <script src="https://cdn.logwork.com/widget/countdown.js"></script>
@@ -73,11 +73,11 @@ const istTime = new Date(currentTime.getTime() + (istOffset * 60000));
           <% if (locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment !== "") { %>
             <center>
               <%  attachmentLink = locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment; %> 
-            <% if(attachmentLink.includes("jpg")){ %>
-              <img style="height: 40vh; width: auto;margin-top: -15vh;" src="/questionfiles/<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" alt="Question Image" class="qimg" />
+            <% if(attachmentLink.includes("png")){ %>
+              <img style="height: 40vh; width: auto;margin-top: -15vh;" src="<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" alt="Question Image" class="qimg" />
           </center>
        <%} %>
-            <a class="attacher" href="/questionfiles/<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" download="<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" target="_blank">
+            <a class="attacher" href="<%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>" download target="_blank">
               <%- locals.questions.find(q => !locals.team.questions.includes(q.title)).attachment %>
             </a>
            
