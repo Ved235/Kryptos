@@ -5,8 +5,7 @@ var successfullAttack = false;
 
 router.post("/attack", verify, async (req, res) => {
   const powerupattack = req.body.powerupType;
-  console.log(powerupattack);
-  console.log(req.body.victimname);
+
   try {
     const defender = await Team.findOne({ name: req.body.victimname });
 

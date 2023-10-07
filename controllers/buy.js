@@ -8,7 +8,7 @@ router.post("/powerup", verify, async (req, res) => {
   const admin = await Team.findOne({ email: "admin@admin.com" });
  
   const powerupAllowed = admin.dp;
-  console.log(powerupAllowed);
+
   if(powerupAllowed == "false"){
     res.send("Powerups are not allowed right now");
   }else{

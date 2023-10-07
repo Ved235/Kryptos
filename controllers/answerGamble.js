@@ -77,6 +77,9 @@ router.post("/answerGamble/", verify, async (req, res) => {
         $push: { questionsGamble: question.title },
         gamble: false,
         $inc: { fp: point },
+        $set:{
+          timestamp: new Date().getTime()
+        }
         
       },
       { multi: true },

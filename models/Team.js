@@ -81,6 +81,10 @@ const teamSchema = new mongoose.Schema({
   attackCooldown: {
     type: Number,
     default: 0,
+  },
+  timestamp: {
+    type: Number,
+    default: 0,
   }
 });
 

@@ -18,7 +18,7 @@ router.post("/questionMaker", verifynCrypt, async (req, res) => {
   });
   try {
     const made = await question.save();
-    console.log(made);
+  
     res.render("makeQuestion.ejs", { registered: true });
   } catch (error) {
     res.status(400).send(error);
@@ -35,7 +35,7 @@ else{
   });
   try {
     const made = await question.save();
-    console.log(made);
+  
     res.render("makeQuestion.ejs", { registered: true });
   } catch (error) {
     res.status(400).send(error);

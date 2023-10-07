@@ -14,8 +14,10 @@ const logSchema = new mongoose.Schema({
     required: true,
   },
   time: {
-    type: Date,
-    default: Date().now,
+    type: String,
+    default: Date().toLocaleString(),
+    //date and time to string conversion
+     
   },
   success: {
     type: Boolean,

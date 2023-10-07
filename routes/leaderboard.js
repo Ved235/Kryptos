@@ -5,7 +5,7 @@ const Team = require("../models/Team");
 router.get("/leaderboard", verify, (req, res) => {
   const success = req.query.success;
   Team.find({})
-    .sort({ fp: "desc" })
+    .sort({ fp: "desc" ,timestamp:"asc"})
     .exec(function (err, docs) {
       if (err) {
         console.log(err);
@@ -28,8 +28,10 @@ router.get(
 );
 
 router.get("/leaderboardout", (req, res) => {
+
+
   Team.find({})
-    .sort({ fp: "desc" })
+    .sort({ fp: "desc" ,timestamp:"asc"})
     .exec(function (err, docs) {
       if (err) {
         console.log(err);

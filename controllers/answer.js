@@ -27,13 +27,9 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
   }
 
   // Check if this user has already answered the same question within the rate limit window
-  const existingLogEntry = await Log.findOne({
-    qtitle: req.body.title,
-    solver: req.team.email,
-    time: { $gte: new Date() - 11000 }, // Check within the last 11 seconds
-  });
 
-  if (existingLogEntry) {
+
+  if (false) {
     res.send("You have already answered this question within the rate limit window.");
   } else {
     const activity = new Log({
@@ -43,7 +39,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
     });
     try {
       const logged = await activity.save();
-      console.log("Log saved successfully", logged);
+     
     } catch (error) {
       console.error("Error saving log:", error);
       res.status(500).send("Error saving log");
@@ -79,26 +75,28 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
         res.redirect("/questions/?question=" + req.body.title);
       }
     } else if (question && !buyer.questions.includes(question.title)) {
-      console.log(question.title);
+    
       const activity = new Log({
         qtitle: question.title,
         sol: req.body.ans,
         solver: req.team.email,
         success: true,
+      
       });
       try {
         const logged = await activity.save();
       } catch (error) {
         res.send("noobs");
       }
-      
+      const timeNow = new Date().getTime();
       Team.updateOne(
         { _id: req.team._id },
         {
           $addToSet: { questions: question.title },
           $inc: { bp: question.points },
           $set: {
-            fp: 400*(fppoints + 1)
+            fp: 400*(fppoints + 1),
+            timestamp: timeNow
           }
         },
         { multi: true },

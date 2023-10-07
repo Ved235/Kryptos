@@ -43,82 +43,17 @@
             <% if (locals.team.dpVisible===true) { %>
             <td><%- element.dp %></td>
             <% } %>
-    <!-- <% if (element.shield===false&&element.defenseCooldown===0&&locals.team.attackCooldown===0){ %>
-    <td class='atkcol'>
-      <span class='atkbtn att<%- allteams.indexOf(element) %>' onclick="openModal('<%- allteams.indexOf(element) %>')">Attack</span>
-    </td>
-    <% }else{ %>
-      <td>
-         </td> -->
-    <% } %>
+
   </tr>
   <% }}) %>
 </table>
 </div>
-<% locals.allteams.forEach( function (element){ %> <% if
-(((element._id).toString()!==(locals.team._id).toString()) && element.shield===false&&element.defenseCooldown===0&&locals.team.attackCooldown===0){ %>
-<div id="pop<%= allteams.indexOf(element) %>" class="mymodal">
-      <h1 data-name="<%= element.name %>">
-        <%= element.name %>
-      </h1>
 
-</div>
-<% }}) %>
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
 ></script>
 <script src="/js/cta.min.js"></script>
 <script src="/js/tw.min.js"></script>
 <script src="https://unpkg.com/scrollreveal"></script>
-<script type="text/javascript">
-  <% if (locals.success==='zero') { %>
-  window.onload=function(){
-    alert('Select Atleast one troop to attack!')
-  }
-  <% } %>
-    ScrollReveal({
-      reset:true,
-    }).reveal('tr',{
-      delay:50,
-    });
 
-  $(document).ready(function () {
-    $('.inv').hide()
-    $('.dep').hide()
-    $('.inputz').hide()
-  });
-
-  function openModal(school) {
-    $(".mymodal").each(function () {
-      $(this).css({ display: "none" });
-    });
-      var e1 = document.querySelector('.'+'att'+school),
-      e2 = document.getElementById('pop'+school);
-    cta(e1, e2,{duration: 0.5, targetShowDuration:0.5, relativeToWindow:true},function (e2) {
-    e2.style.display = "block";
-      $('#' + $(e2).attr('id') + ' .inv').fadeIn(300)
-      $('#' + $(e2).attr('id') + ' .dep').fadeIn(300)
-      $('#' + $(e2).attr('id') + ' .inputz').fadeIn(300)
-      $('#' + $(e2).attr('id') + ' .inn')
-        .css("display", "flex")
-        .hide()
-        .fadeIn();
-
-    // var defSelect='#'+$(e2).attr('id') + ' > h1';
-    //     $(defSelect).typewrite({
-    //     actions: [
-    //       {type: 'Attacking '+ $(defSelect).attr('data-name')},
-    //     ],
-    //     speed:20,
-    //     cursor:"|"
-    //   });
-    });
-  }
-  function closeModal(school) {
-    $(".mymodal").each(function () {
-      $(this).css({ display: "none" });
-    });
-  }
-
-</script>
 <%- include('footer'); -%>
