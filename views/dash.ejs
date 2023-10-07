@@ -20,15 +20,15 @@
         <center>
         <h1>Powerup Cooldown</h1>
         <% if (locals.team.idk===true) { %>
-        <img src="/images/shield.svg" alt="shield" />
+        <img src="/images/shield.svg" alt="shield" style="height: 75px; width: 75px;"/>
         <% }else if (locals.team.hintspire===true) { %>
-        <img src="/images/OIG__3_-removebg-preview.png" alt="halfprice" style="width: 33%; height: 60%"/>
+        <img src="/images/OIG__3_-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;"/>
         <% }else if (locals.team.gamble===true) { %>
-          <img src="/images/OIG__1_-removebg-preview.png" alt="halfprice" style="width: 25%;"/>
+          <img src="/images/OIG__1_-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;"/>
           <%} else if (locals.team.dp == "jumpscare" ) { %>
-          <img src="/images/jumpscare.svg" alt="halfprice" style="width: 30%; height: auto;" />
+          <img src="/images/jumpscare.svg" alt="halfprice" style="height: 75px; width: 75px;" />
           <%}else if (locals.team.dp == "sabotage") { %>
-            <img src="/images/image-removebg-preview.png" alt="halfprice" style="width: 27%; height: 55%" />
+            <img src="/images/image-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;" />
             <%}else { %>
           <h1 style="font-weight: 500; margin-top: 10px;">None</h1>
         </center>
