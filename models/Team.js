@@ -87,10 +87,10 @@ const teamSchema = new mongoose.Schema({
 teamSchema.pre("updateOne", function (next) {
   data = this.getUpdate();
   try {
-    if (data["$set"].dp > 0) {
+    if (data["$set"].powerupTimer > 0) {
       next();
-    } else if (data["$set"].dp < 0) {
-      data["$set"].dp = 0;
+    } else if (data["$set"].powerupTimer < 0) {
+      data["$set"].powerupTimer = 0;
       next();
     }else{
       next();
