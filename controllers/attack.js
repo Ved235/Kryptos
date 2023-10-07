@@ -12,7 +12,7 @@ router.post("/attack", verify, async (req, res) => {
 
     if (defender) {
       // Set the power-up in the session storage
-      if(defender.attackCooldown == 0 && defender.hintspire == false && defender.gamble == false){
+      if(defender.attackCooldown == 0 && defender.gamble == false){
 
       await Team.updateOne(
         { email: defender.email },
@@ -20,7 +20,7 @@ router.post("/attack", verify, async (req, res) => {
           $set: {
             [powerupattack]: true,
    
-            attackCooldown: 20,
+            attackCooldown: 25,
           },
         }
       );

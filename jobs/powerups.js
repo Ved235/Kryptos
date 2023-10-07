@@ -7,7 +7,7 @@ module.exports = cron.schedule(
     
     Team.find({}, function (err, docs) {
       docs.forEach((element) => {
-        if (element.powerupTimer >= 1) {
+        if (element.powerupTimer >0) {
           Team.updateOne(
             { email: element.email },
             {
