@@ -18,13 +18,13 @@ require("dotenv").config();
 router.post("/answer/", verify, apiLimiter, async (req, res) => {
   let fppoints = 0;
   let bppoints = 0;
-  var ans = " ";
+ 
   const buyer = await Team.findOne({ _id: req.team._id });
   fppoints = buyer.questions.length;
 
-  if (req.body.ans !== "") {
+
     ans = req.body.ans;
-  }
+  
 
   // Check if this user has already answered the same question within the rate limit window
 
