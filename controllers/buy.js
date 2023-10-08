@@ -131,7 +131,7 @@ router.post("/powerup", verify, async (req, res) => {
             var ques = buyer.questions.length;
             var comb = ques.toString() + buyer.email;
             var hash = crypto.createHash('sha256').update(comb).digest('hex');
-            res.send(hash + " is the hash of your hint. Send this to a kryptos admin to get your hint.");
+            res.send(hash + " is the hash of your hint. Send this to a kryptos admin to get your hint along with your registered email.");
           }
           else if(powerupself == "gamble"){
             res.redirect("/gamble");
