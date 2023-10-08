@@ -21,10 +21,11 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
  
   const buyer = await Team.findOne({ _id: req.team._id });
   fppoints = buyer.questions.length;
-
-
-  const ans = req.body.ans;
-  
+   let ans = req.body.ans;;
+  if(ans == ""){
+     ans = " ";
+  }
+ 
 
   // Check if this user has already answered the same question within the rate limit window
 
@@ -86,7 +87,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
       try {
         const logged = await activity.save();
       } catch (error) {
-        res.send("noobs");
+        res.send("error");
       }
       const timeNow = new Date().getTime();
       Team.updateOne(

@@ -8,9 +8,11 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 router.post("/answerGamble/", verify, async (req, res) => {
-
-   const ans = req.body.ans;
   
+   let ans = req.body.ans;
+    if(ans == ""){
+      ans = " ";
+    }
 
   const activity = new Log({
     qtitle: req.body.title,
