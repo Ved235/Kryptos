@@ -23,7 +23,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
   fppoints = buyer.questions.length;
 
 
-    ans = req.body.ans;
+  var ans = req.body.ans;
   
 
   // Check if this user has already answered the same question within the rate limit window
