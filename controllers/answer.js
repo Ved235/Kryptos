@@ -8,7 +8,7 @@ const rateLimit = require("express-rate-limit");
 
 // Define the rate limit options (adjust as needed)
 const apiLimiter = rateLimit({
-  windowMs: 11000, // 11 seconds window (slightly more than your setTimeout)
+  windowMs: 5000, // 11 seconds window (slightly more than your setTimeout)
   max: 1, // Limit each IP to 1 request within the window
   message: "Too many requests from this IP, please try again later.",
 });
@@ -23,7 +23,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
   fppoints = buyer.questions.length;
 
 
-  var ans = req.body.ans;
+  const ans = req.body.ans;
   
 
   // Check if this user has already answered the same question within the rate limit window
@@ -78,7 +78,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
     
       const activity = new Log({
         qtitle: question.title,
-        sol: req.body.ans,
+        sol: ans,
         solver: req.team.email,
         success: true,
       

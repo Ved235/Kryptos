@@ -8,10 +8,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 router.post("/answerGamble/", verify, async (req, res) => {
-  var ans = " ";
-  if(req.body.ans !== ""){
-    ans = req.body.ans;
-  }
+
+   const ans = req.body.ans;
+  
 
   const activity = new Log({
     qtitle: req.body.title,
@@ -55,7 +54,7 @@ router.post("/answerGamble/", verify, async (req, res) => {
   } else if (question && buyer.gamble === true) {
     const activity = new Log({
       qtitle: question.title,
-      sol: req.body.ans,
+      sol: ans,
       solver: req.team.email,
       success: true,
     });
