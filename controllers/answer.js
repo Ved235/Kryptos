@@ -3,6 +3,7 @@ const verify = require("../middleware/tokenVerification");
 const Team = require("../models/Team");
 const Log = require("../models/Log");
 const Questions = require("../models/Questions");
+
 const mongoose = require("mongoose");
 const rateLimit = require("express-rate-limit");
 
@@ -96,7 +97,7 @@ router.post("/answer/", verify, apiLimiter, async (req, res) => {
           $addToSet: { questions: question.title },
           $inc: { bp: question.points },
           $set: {
-            fp: 400*(fppoints + 1),
+            fp: 400*(fppoints + 1)+100*(buyer.questionsGamble.length),
             timestamp: timeNow
           }
         },
