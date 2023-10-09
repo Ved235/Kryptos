@@ -10,10 +10,10 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 
 // cronjobs
-const powerupManager = require("./jobs/powerups");
-powerupManager.start();
-const cooldownManager = require("./jobs/cooldown");
-cooldownManager.start();
+// const powerupManager = require("./jobs/powerups");
+// powerupManager.start();
+// const cooldownManager = require("./jobs/cooldown");
+// cooldownManager.start();
 
 
 // routes
