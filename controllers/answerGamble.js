@@ -69,7 +69,7 @@ router.post("/answerGamble/", verify, async (req, res) => {
     if(buyer.powerupTimer >= 15){
       point = point + 200;
     }
-    else if(buyer.powerupTimer >= 10){
+    else if(buyer.powerupTimer > 0){
       point = point + 100;
     }
     Team.updateOne(
