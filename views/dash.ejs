@@ -4,6 +4,7 @@
     <h1><%- locals.team.name.trim() %>, <%- locals.team.school.trim() %></h1>
     <h3 style="color:#578b32;cursor: pointer;text-align:right;display:inline-block;float:right" onclick="window.location.href='/'">Logout</h3>
     </div>
+    
   <div class="dashrow">
     <div class="points">
       <div class="fp">
@@ -16,45 +17,17 @@
       </div>
     </div>
     <div class="right">
-      <div class="powerup">
-        <center>
-        <h1>Powerup Cooldown</h1>
-        <% if (locals.team.idk===true) { %>
-        <img src="/images/shield.svg" alt="shield" style="height: 75px; width: 75px;"/>
-        <% }else if (locals.team.hintspire===true) { %>
-        <img src="/images/OIG__3_-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;"/>
-        <% }else if (locals.team.gamble===true) { %>
-          <img src="/images/OIG__1_-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;"/>
-          <%} else if (locals.team.dp == "jumpscare" ) { %>
-          <img src="/images/jumpscare.svg" alt="halfprice" style="height: 75px; width: 75px;" />
-          <%}else if (locals.team.dp == "sabotage") { %>
-            <img src="/images/image-removebg-preview.png" alt="halfprice" style="height: 75px; width: 75px;" />
-            <%}else { %>
-          <h1 style="font-weight: 500; margin-top: 10px;">None</h1>
-        </center>
-        <% } %> 
-          <% if (locals.team.powerupTimer > 0) { %>
-           <h3 style="color:#578b32"><%- locals.team.powerupTimer %>min</h3>
-          <% }else {%>
-            <h3 ><a style="color:#578b32 ;text-decoration: none;" href="/shop">Buy One</a></h3>
-            <%}%>
-      </div>
-      <div class="yaar">
-        <h1>Attacked Cooldown</h1>
-        
-          
-       
-            <h1 class="numbr" style="color: #578b32 ; text-decoration: none;"><%- locals.team.attackCooldown %>m</h1>
-         
-            
-      
-      </div>
-    </div>
-  </div>
+
     <div class="dashrow">
 
     </div>
   </div>
+  <script>
+    const originalTimestamp = 'Tue Oct 10 2023 07:10:07 GMT+0000';
+const dateObject = new Date(originalTimestamp);
+const isoTimestamp = dateObject.toISOString();
 
+console.log(isoTimestamp);
+  </script>
   <%- include('footer'); -%>
 </div>
