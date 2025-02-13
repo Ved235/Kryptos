@@ -2,21 +2,20 @@ const router = require("express").Router();
 const verify = require("../middleware/tokenVerification");
 const Team = require("../models/Team");
 
-router.get("/leaderboard", verify, (req, res) => {
-  const success = req.query.success;
-  Team.find({})
-    .sort({ fp: "desc" ,timestamp:"asc"})
-    .exec(function (err, docs) {
-      if (err) {
-        console.log(err);
-      }
-      res.render("leaderboard.ejs", {
-        team: req.team,
-        allteams: docs,
-        active: "leaderboard",
-        success: success,
-      });
+router.get("/leaderboard", verify, async (req, res) => {
+  try {
+    const success = req.query.success;
+    const allteams = await Team.find({}).sort({ fp: "desc", timestamp: "asc" });
+    res.render("leaderboard.ejs", {
+      team: req.team,
+      allteams,
+      active: "leaderboard",
+      success,
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
 
 router.get(
@@ -27,17 +26,14 @@ router.get(
   }
 );
 
-router.get("/leaderboardout", (req, res) => {
-
-
-  Team.find({})
-    .sort({ fp: "desc" ,timestamp:"asc"})
-    .exec(function (err, docs) {
-      if (err) {
-        console.log(err);
-      }
-      res.render("leaders.ejs", { active: "leaderboard", allteams: docs });
-    });
+router.get("/leaderboardout", async (req, res) => {
+  try {
+    const allteams = await Team.find({}).sort({ fp: "desc", timestamp: "asc" });
+    res.render("leaders.ejs", { active: "leaderboard", allteams });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
 
 module.exports = router;
