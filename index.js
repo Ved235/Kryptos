@@ -37,18 +37,14 @@ const cookieParser = require("cookie-parser");
 const port = 5000 || process.env.PORT;
 require("dotenv").config();
 
-mongoose.connect(
-  process.env.MONGO_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  },
-  () => {
-   
-  }
-);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("Failed to connect:", err);
+  });
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the "public" folder
